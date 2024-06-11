@@ -43,4 +43,9 @@ public partial class MainPage : ContentPage
 	{
 		Navigation.PushAsync(new LearningPage());
 	}
+
+	private void OnShopping_Clicked(object sender, EventArgs e)
+	{
+		Navigation.PushAsync(new ShoppingPage());
+	}
 }

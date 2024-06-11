@@ -38,6 +38,11 @@
                 Text="Learning" 
                 Clicked="OnLearning_Clicked"
                 HorizontalOptions="Fill" />
+
+            <Button
+                Text="Shopping" 
+                Clicked="OnShopping_Clicked"
+                HorizontalOptions="Fill" />
         </VerticalStackLayout>
     </ScrollView>
 

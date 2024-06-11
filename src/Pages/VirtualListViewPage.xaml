@@ -7,7 +7,7 @@
              xmlns:v="clr-namespace:AllTheLists.Views"
              x:Class="AllTheLists.VirtualListViewPage"
              Title="VirtualListView">
-    <vlv:VirtualListView Adapter="{Binding ProductsAdapter}">
+    <!-- <vlv:VirtualListView Adapter="{Binding ProductsAdapter}">
         <vlv:VirtualListView.ItemTemplate>
             <DataTemplate>
                 <vlv:VirtualViewCell>
@@ -15,5 +15,5 @@
                 </vlv:VirtualViewCell>
             </DataTemplate>
         </vlv:VirtualListView.ItemTemplate>
-    </vlv:VirtualListView>
+    </vlv:VirtualListView> -->
 </ContentPage>

@@ -1,4 +1,5 @@
-﻿using AllTheLists.Models;
+﻿using System.Diagnostics;
+using AllTheLists.Models;
 using AllTheLists.Models.Learning;
 using Fonts;
 
@@ -19,19 +20,72 @@ public partial class App : Application
         for (int i = 0; i < count; i++)
         {
             var ran = Random.Shared.Next(1, 1000);
-            _products.Add(new Product
-            {
-            Id = i,
-            Name = $"Product {i}",
-            Price = ran,
-            Description = "This is a sample product description.",
-            ImageUrl = ran % 2 == 0 ? "" : $"https://picsum.photos/id/{ran}/80",
-            Company = $"Company {i}",
-            Type = $"Type {i}"
-            });
+            _products.Add(
+                new Product
+                {
+                    Id = i,
+                    Name = $"Product {i}",
+                    Price = ran,
+                    Description = "This is a sample product description.",
+                    ImageUrl = ran % 2 == 0 ? "" : $"https://picsum.photos/id/{ran}/80",
+                    Company = $"Company {i}",
+                    Type = $"Type {i}",
+                    SalesCategory = Random.Shared.Next(0, 3) switch
+                    {
+                        0 => "NEW",
+                        1 => "BEST SELLER",
+                        _ => ""
+                    },
+                    Category = Random.Shared.Next(0, 4) switch
+                    {
+                        0 => "Men's Sportswear",
+                        1 => "Men's Originals",
+                        2 => "Originals",
+                        _ => "Sportswear"
+                    },
+                    ColorWays = Random.Shared.Next(1, 16)
+                });
         }
         return _products;
     }
+
+    private static List<ProductDisplay> _productDisplays;
+
+    public static List<ProductDisplay> GenerateProductDisplays()
+    {
+        if (_productDisplays != null)
+            return _productDisplays;
+
+        int count = 1000;
+        _productDisplays = new List<ProductDisplay>();
+        for (int i = 0; i < count; i++)
+        {
+            if (i < 4)
+            {
+                _productDisplays.Add(new ProductDisplay
+                {
+                    Products = GenerateProducts().GetRange(i * 2, 2)
+                });
+            }
+            else if (i % 3 == 1)
+            {
+                _productDisplays.Add(new ProductDisplay
+                {
+                    Products = GenerateProducts().GetRange(i * 2 - 1, 1)
+                });
+            }
+            else
+            {
+                _productDisplays.Add(new ProductDisplay
+                {
+                    Products = GenerateProducts().GetRange(i * 2 - 2, 2)
+                });
+            }
+
+            Debug.WriteLine($"Product Display {i} has {GenerateProducts().GetRange(i * 2, 2).Count} products");
+        }
+        return _productDisplays;
+    }  
 
     private static string _lipsum = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur faucibus tortor nisi, at luctus massa molestie sit amet. Curabitur quam ligula, auctor sit amet viverra in, mattis eget libero. Nam pulvinar ante non mauris volutpat faucibus vitae ac diam. Fusce nec fringilla dolor. Nulla vitae justo quis mauris rutrum rutrum quis sed nisl. Nam vehicula erat et enim hendrerit, sollicitudin molestie nibh venenatis. Donec sapien sem, imperdiet et dui gravida, imperdiet viverra velit. Nulla sed quam porttitor, rhoncus felis quis, fermentum est. Quisque eu nulla urna. Ut vitae mauris vitae turpis malesuada lobortis nec sit amet massa. Vivamus vehicula arcu ac tempus aliquet. In mollis hendrerit consequat.";
 

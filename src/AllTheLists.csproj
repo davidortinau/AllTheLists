@@ -20,6 +20,8 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 
+		<NoWarn>$(NoWarn);CS8618;CS8767;CS8603</NoWarn>
+
 		<!-- Display name -->
 		<ApplicationTitle>AllTheLists</ApplicationTitle>
 

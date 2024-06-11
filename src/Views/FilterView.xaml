@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:f="clr-namespace:Fonts"
+             x:Class="AllTheLists.Views.FilterView">
+    <ContentView.Resources>
+        <Style x:Key="FilterButtonStyle" TargetType="Button">
+            <Setter Property="Text" Value="705" />
+            <Setter Property="BorderWidth" Value="1" />
+            <Setter Property="BorderColor" Value="Silver" />
+            <Setter Property="CornerRadius" Value="0" />
+            <Setter Property="Background" Value="White" />
+            <Setter Property="TextColor" Value="Silver" />
+            <Setter Property="FontSize" Value="10" />
+            <Setter Property="Padding" Value="8,0" />
+            <Setter Property="HeightRequest" Value="24" />
+        </Style>
+    </ContentView.Resources>
+
+    <Grid ColumnDefinitions="Auto,*" ColumnSpacing="8" Margin="16">
+        <ImageButton Aspect="Center"
+            Source="{FontImage FontFamily=FontAwesome, Glyph={x:Static f:FontAwesome.Filter}, Size=14, Color=Black}" 
+            Background="Transparent" />
+        <ScrollView Orientation="Horizontal" Grid.Column="1">
+            <HorizontalStackLayout Spacing="8">
+                <Button Text="705" Style="{StaticResource FilterButtonStyle}" />
+                <Button Text="SAMBA" Style="{StaticResource FilterButtonStyle}" />
+                <Button Text="GAZELLE" Style="{StaticResource FilterButtonStyle}" />
+                <Button Text="ULTRABOOST" Style="{StaticResource FilterButtonStyle}" />
+                <Button Text="ADIZERO" Style="{StaticResource FilterButtonStyle}" />
+                <Button Text="FORUM" Style="{StaticResource FilterButtonStyle}" />
+                <Button Text="SUPERSTAR" Style="{StaticResource FilterButtonStyle}" />
+                <Button Text="CAMPUS" Style="{StaticResource FilterButtonStyle}" />
+                <Button Text="LITE RACER" Style="{StaticResource FilterButtonStyle}" />
+                <Button Text="2000S" Style="{StaticResource FilterButtonStyle}" />                
+            </HorizontalStackLayout>
+        </ScrollView>
+    </Grid>
+</ContentView>

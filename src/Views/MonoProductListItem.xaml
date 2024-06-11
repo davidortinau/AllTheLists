@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Maui;assembly=FFImageLoading.Maui"
+             xmlns:f="clr-namespace:Fonts"
+             xmlns:m="clr-namespace:AllTheLists.Models"
+             xmlns:vm="clr-namespace:AllTheLists.ViewModels"
+             xmlns:mct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:DataType="m:Product"
+             x:Class="AllTheLists.Views.MonoProductListItem">
+    
+    <ContentPage.Resources>
+        <mct:IsStringNotNullOrWhiteSpaceConverter x:Key="IsStringNotNullOrWhiteSpaceConverter" />
+    </ContentPage.Resources>
+
+    <Grid Padding="8" RowDefinitions="*,Auto" HeightRequest="240" Background="#EBEFF2">
+        <Image 
+            Source="{FontImage FontFamily=FontAwesome, Glyph={x:Static f:FontAwesome.ShoePrints}, Color=Black,Size=120}" 
+            HorizontalOptions="Center"    
+        />
+
+        <Image Background="Transparent" Source="{FontImage FontFamily=FontAwesome, Glyph={x:Static f:FontAwesome.Heart}, Color=Black,Size=14}"
+            HorizontalOptions="End" VerticalOptions="Start"
+            
+             />
+
+        <VerticalStackLayout Grid.Row="1" CompressedLayout.IsHeadless="True" Spacing="4" VerticalOptions="End">
+            <Label Text="{Binding SalesCategory}" FontSize="12" IsVisible="{Binding SalesCategory,Converter={StaticResource IsStringNotNullOrWhiteSpaceConverter}}"
+                Background="White" Padding="4" TextColor="Black" FontAttributes="Italic" 
+                HorizontalOptions="Start"/>
+            <Label Text="{Binding Price, StringFormat='{0:C}'}" FontSize="12" 
+                Background="White" Padding="4" TextColor="Black"
+                HorizontalOptions="Start"/>
+            <Label Text="{Binding Name}" FontSize="12" FontAttributes="Bold" 
+            HorizontalOptions="Start"/>
+            <Label Text="{Binding Category}" FontSize="12" HorizontalOptions="Start" />
+        </VerticalStackLayout>   
+
+        <HorizontalStackLayout Grid.Row="1" HorizontalOptions="End" VerticalOptions="End" Spacing="4">
+            <Label Text="{Binding ColorWays, StringFormat='+{0}'}" FontSize="10"/>
+            <Image Source="{FontImage FontFamily=FontAwesome, Glyph={x:Static f:FontAwesome.Pallet}, Color=Black, Size=10}" />
+        </HorizontalStackLayout> 
+    </Grid>
+</ContentView>

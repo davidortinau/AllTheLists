@@ -7,7 +7,7 @@
              x:Class="AllTheLists.VirtualizedListViewPage"
              xmlns:m="clr-namespace:AllTheLists.Models"
              Title="VirtualizedListView">
-    <mpowerkit:VirtualizeListView x:Name="listView"
+    <!-- <mpowerkit:VirtualizeListView x:Name="listView"
                 ItemsSource="{Binding Products}">
         <mpowerkit:VirtualizeListView.ItemTemplate>
             <DataTemplate x:DataType="m:Product">
@@ -16,5 +16,5 @@
                 </mpowerkit:VirtualizeListViewCell>
             </DataTemplate>
         </mpowerkit:VirtualizeListView.ItemTemplate>
-    </mpowerkit:VirtualizeListView>
+    </mpowerkit:VirtualizeListView> -->
 </ContentPage>
