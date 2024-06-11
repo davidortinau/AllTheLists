@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AllTheLists.MainPage">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="15"
+            Spacing="25">
+            <Button
+                Text="CollectionView" 
+                Clicked="OnCollectionView_Clicked"
+                HorizontalOptions="Fill" />
+            <Button
+                Text="ListView" 
+                Clicked="OnListView_Clicked"
+                HorizontalOptions="Fill" />
+            <Button
+                Text="VirtualListView (Redth)" 
+                Clicked="OnVirtualListView_Clicked"
+                HorizontalOptions="Fill" />
+            <Button
+                Text="VirtualizedListView" 
+                Clicked="OnVirtualizedListView_Clicked"
+                HorizontalOptions="Fill" />
+
+            <Button
+                Text="Reviews" 
+                Clicked="OnReviews_Clicked"
+                HorizontalOptions="Fill" />
+
+            <Button
+                Text="Check-ins" 
+                Clicked="OnCheckIns_Clicked"
+                HorizontalOptions="Fill" />
+
+            <Button
+                Text="Learning" 
+                Clicked="OnLearning_Clicked"
+                HorizontalOptions="Fill" />
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
