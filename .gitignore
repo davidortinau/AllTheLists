@@ -406,3 +406,5 @@ ASALocalRun/
 .vscode/settings.json
 src/.vscode/settings.json
 .meteor/
+_global.json
+global.json

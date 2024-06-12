@@ -5,20 +5,22 @@
              x:Class="AllTheLists.Views.FilterView">
     <ContentView.Resources>
         <Style x:Key="FilterButtonStyle" TargetType="Button">
-            <Setter Property="Text" Value="705" />
             <Setter Property="BorderWidth" Value="1" />
             <Setter Property="BorderColor" Value="Silver" />
             <Setter Property="CornerRadius" Value="0" />
             <Setter Property="Background" Value="White" />
             <Setter Property="TextColor" Value="Silver" />
             <Setter Property="FontSize" Value="10" />
-            <Setter Property="Padding" Value="8,0" />
+            <Setter Property="Padding" Value="8" />
             <Setter Property="HeightRequest" Value="24" />
         </Style>
     </ContentView.Resources>
 
-    <Grid ColumnDefinitions="Auto,*" ColumnSpacing="8" Margin="16">
-        <ImageButton Aspect="Center"
+    <Grid ColumnDefinitions="Auto,*" ColumnSpacing="16" Margin="16">
+        <Image 
+            HeightRequest="24" 
+            WidthRequest="24" 
+            Aspect="Center"
             Source="{FontImage FontFamily=FontAwesome, Glyph={x:Static f:FontAwesome.Filter}, Size=14, Color=Black}" 
             Background="Transparent" />
         <ScrollView Orientation="Horizontal" Grid.Column="1">

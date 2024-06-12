@@ -9,20 +9,21 @@
              x:DataType="m:Product"
              x:Class="AllTheLists.Views.MonoProductListItem">
     
-    <ContentPage.Resources>
+    <ContentView.Resources>
         <mct:IsStringNotNullOrWhiteSpaceConverter x:Key="IsStringNotNullOrWhiteSpaceConverter" />
-    </ContentPage.Resources>
+    </ContentView.Resources>
 
     <Grid Padding="8" RowDefinitions="*,Auto" HeightRequest="240" Background="#EBEFF2">
         <Image 
-            Source="{FontImage FontFamily=FontAwesome, Glyph={x:Static f:FontAwesome.ShoePrints}, Color=Black,Size=120}" 
-            HorizontalOptions="Center"    
+            x:Name="ProductImage"
+            Source="{Binding Image}" 
+            HorizontalOptions="Fill" 
+            VerticalOptions="Fill"
+            Aspect="AspectFit"   
         />
 
         <Image Background="Transparent" Source="{FontImage FontFamily=FontAwesome, Glyph={x:Static f:FontAwesome.Heart}, Color=Black,Size=14}"
-            HorizontalOptions="End" VerticalOptions="Start"
-            
-             />
+            HorizontalOptions="End" VerticalOptions="Start" />
 
         <VerticalStackLayout Grid.Row="1" CompressedLayout.IsHeadless="True" Spacing="4" VerticalOptions="End">
             <Label Text="{Binding SalesCategory}" FontSize="12" IsVisible="{Binding SalesCategory,Converter={StaticResource IsStringNotNullOrWhiteSpaceConverter}}"
@@ -38,7 +39,7 @@
 
         <HorizontalStackLayout Grid.Row="1" HorizontalOptions="End" VerticalOptions="End" Spacing="4">
             <Label Text="{Binding ColorWays, StringFormat='+{0}'}" FontSize="10"/>
-            <Image Source="{FontImage FontFamily=FontAwesome, Glyph={x:Static f:FontAwesome.Pallet}, Color=Black, Size=10}" />
+            <Image Source="{FontImage FontFamily=FontAwesome, Glyph={x:Static f:FontAwesome.PaintBrush}, Color=Black, Size=10}" />
         </HorizontalStackLayout> 
     </Grid>
 </ContentView>

@@ -9,6 +9,8 @@ public partial class App : Application
 {
     private static List<Product> _products;
 
+    private static string[] shoeImages = new string[] { "shoe_01.png", "shoe_02.png", "shoe_03.png", "shoe_04.png", "shoe_05.png", "shoe_06.png", "shoe_07.png", "shoe_08.png" };
+    
     public static List<Product> GenerateProducts()
     {
 
@@ -28,6 +30,7 @@ public partial class App : Application
                     Price = ran,
                     Description = "This is a sample product description.",
                     ImageUrl = ran % 2 == 0 ? "" : $"https://picsum.photos/id/{ran}/80",
+                    Image = shoeImages[Random.Shared.Next(0, shoeImages.Length)],
                     Company = $"Company {i}",
                     Type = $"Type {i}",
                     SalesCategory = Random.Shared.Next(0, 3) switch
