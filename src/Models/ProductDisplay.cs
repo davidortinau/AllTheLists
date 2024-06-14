@@ -7,4 +7,7 @@ public partial class ProductDisplay : ObservableObject
 {
     [ObservableProperty]
     private List<Product> _products;
+
+    [ObservableProperty]
+    private bool _isLoading;
 }

@@ -13,16 +13,24 @@
         <DataTemplate x:Key="DuoTemplate">
             <v:DuoProductListItem />
         </DataTemplate>
+        <DataTemplate x:Key="LoadingMoreTemplate">
+            <v:LoadingMoreView />
+        </DataTemplate>
 
         <p:ShopTemplateSelector x:Key="ShopTemplateSelector" 
             MonoTemplate="{StaticResource MonoTemplate}"
             DuoTemplate="{StaticResource DuoTemplate}"
+            LoadingMoreTemplate="{StaticResource LoadingMoreTemplate}"
         />
-    </ContentPage.Resources>
+    </ContentPage.Resources>   
     
     <CollectionView 
         ItemTemplate="{StaticResource ShopTemplateSelector}"
-        ItemsSource="{Binding Products}">
+        ItemsSource="{Binding VisibleProducts}"
+        RemainingItemsThreshold="4"
+        RemainingItemsThresholdReached="CollectionView_RemainingItemsThresholdReached"
+        RemainingItemsThresholdReachedCommand="{Binding OnThresholdReachedCommand}"
+        >
         <CollectionView.ItemsLayout>
             <LinearItemsLayout Orientation="Vertical" ItemSpacing="4"/>
             </CollectionView.ItemsLayout>

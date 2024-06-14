@@ -12,7 +12,7 @@
             <Setter Property="TextColor" Value="Silver" />
             <Setter Property="FontSize" Value="10" />
             <Setter Property="Padding" Value="8" />
-            <Setter Property="HeightRequest" Value="24" />
+            
         </Style>
     </ContentView.Resources>
 
@@ -23,7 +23,7 @@
             Aspect="Center"
             Source="{FontImage FontFamily=FontAwesome, Glyph={x:Static f:FontAwesome.Filter}, Size=14, Color=Black}" 
             Background="Transparent" />
-        <ScrollView Orientation="Horizontal" Grid.Column="1">
+        <ScrollView Orientation="Horizontal" Grid.Column="1" HorizontalScrollBarVisibility="Never">
             <HorizontalStackLayout Spacing="8">
                 <Button Text="705" Style="{StaticResource FilterButtonStyle}" />
                 <Button Text="SAMBA" Style="{StaticResource FilterButtonStyle}" />
