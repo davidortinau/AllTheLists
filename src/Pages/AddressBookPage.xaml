@@ -9,67 +9,77 @@
         <xct:IsStringNotNullOrEmptyConverter x:Key="IsNotNullConverter" />
     </ContentPage.Resources>
 
-     <ListView ItemsSource="{Binding ContactsGroups}" 
-              IsGroupingEnabled="True">
-        <ListView.ItemTemplate>
-            <DataTemplate>
-                <ViewCell>
-                    <HorizontalStackLayout Padding="10" Spacing="16">
-                        <Border StrokeShape="RoundRectangle 10"
-                            StrokeThickness="0"
-                            VerticalOptions="Center"
-                            IsVisible="{Binding ProfilePicture, Converter={StaticResource IsNotNullConverter}}"
-                            >
-                            <Image Source="{Binding ProfilePicture}" 
-                                WidthRequest="20" 
-                                HeightRequest="20" 
+    <Grid RowDefinitions="Auto,*">
+        <SearchBar x:Name="SearchBar" 
+            Placeholder="Search" 
+            Text="{Binding SearchText, Mode=TwoWay}"
+            SearchCommand="{Binding SearchCommand}" 
+            VerticalOptions="Start" />
+
+        <ListView 
+            Grid.Row="1"
+            ItemsSource="{Binding ContactsGroups}" 
+            IsGroupingEnabled="True">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <HorizontalStackLayout Padding="10" Spacing="16">
+                            <!-- <Border StrokeShape="RoundRectangle 10"
+                                StrokeThickness="0"
+                                VerticalOptions="Center"
+                                IsVisible="{Binding ProfilePicture, Converter={StaticResource IsNotNullConverter}}"
+                                >
+                                <Image Source="{Binding ProfilePicture}" 
+                                    WidthRequest="20" 
+                                    HeightRequest="20" 
+                                    Aspect="AspectFill" 
+                                    VerticalOptions="Center" />
+                            </Border> -->
+                            <Label FontSize="16" VerticalOptions="Center">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{Binding FirstName}" />
+                                        <Span Text=" " />
+                                        <Span Text="{Binding LastName}" FontAttributes="Bold" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                        </HorizontalStackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            <ListView.GroupHeaderTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Label Text="{Binding GroupName}" 
+                        FontSize="18" 
+                        FontAttributes="Bold"
+                        Padding="12,0,0,0"
+                        VerticalOptions="Center"
+                        Background="Transparent" />
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.GroupHeaderTemplate>
+            <ListView.Header>
+                        <HorizontalStackLayout Spacing="16" Padding="16">
+                            <Border StrokeShape="RoundRectangle 40"
+                                StrokeThickness="0">
+                                <Image Source="avatar_01.png" 
+                                WidthRequest="80" 
+                                HeightRequest="80" 
                                 Aspect="AspectFill" 
+                                VerticalOptions="Center" 
+                                />
+                            </Border>
+                            <Label Text="David Ortinau" 
+                                FontSize="20" 
+                                FontAttributes="Bold" 
                                 VerticalOptions="Center" />
-                        </Border>
-                        <Label FontSize="16" VerticalOptions="Center">
-                            <Label.FormattedText>
-                                <FormattedString>
-                                    <Span Text="{Binding FirstName}" />
-                                    <Span Text=" " />
-                                    <Span Text="{Binding LastName}" FontAttributes="Bold" />
-                                </FormattedString>
-                            </Label.FormattedText>
-                        </Label>
-                    </HorizontalStackLayout>
-                </ViewCell>
-            </DataTemplate>
-        </ListView.ItemTemplate>
-        <ListView.GroupHeaderTemplate>
-            <DataTemplate>
-                <ViewCell>
-                    <Label Text="{Binding GroupName}" 
-                    FontSize="18" 
-                    FontAttributes="Bold"
-                    Padding="12,0,0,0"
-                    VerticalOptions="Center"
-                    Background="Transparent" />
-                </ViewCell>
-            </DataTemplate>
-        </ListView.GroupHeaderTemplate>
-        <ListView.Header>
-                    <HorizontalStackLayout Spacing="16" Padding="16">
-                        <Border StrokeShape="RoundRectangle 40"
-                            StrokeThickness="0">
-                            <Image Source="avatar_01.png" 
-                            WidthRequest="80" 
-                            HeightRequest="80" 
-                            Aspect="AspectFill" 
-                            VerticalOptions="Center" 
-                            />
-                        </Border>
-                        <Label Text="David Ortinau" 
-                            FontSize="20" 
-                            FontAttributes="Bold" 
-                            VerticalOptions="Center" />
-                    </HorizontalStackLayout>
-                
-        </ListView.Header>
-    </ListView>
+                        </HorizontalStackLayout>
+                    
+            </ListView.Header>
+        </ListView>
+    </Grid>
     <!-- <CollectionView ItemsSource="{Binding ContactsGroups}" 
         IsGrouped="True">
         

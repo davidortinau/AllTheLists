@@ -16,6 +16,8 @@ public partial class AddressBookViewModel : ObservableObject
     [ObservableProperty]
     private List<ContactsGroup> _contactsGroups;
 
+    private List<ContactsGroup> _unfilteredContactsGroups;
+
     public AddressBookViewModel()
     {
         _contacts = App.GenerateContacts().OrderBy(c => c.LastName).ThenBy(c => c.FirstName).ToList();
@@ -30,8 +32,34 @@ public partial class AddressBookViewModel : ObservableObject
             var contactsGroup = new ContactsGroup(group.Key.ToString(), group.ToList());
             ContactsGroups.Add(contactsGroup);
         }
+
+        _unfilteredContactsGroups = new List<ContactsGroup>(ContactsGroups);
     }
 
-    
+    [ObservableProperty]
+    private string _searchText = string.Empty;
 
+    partial void OnSearchTextChanged(string value)
+    {
+        Search();
+    }
+
+    [RelayCommand]
+    void Search()
+    {
+        if (string.IsNullOrWhiteSpace(SearchText))
+        {
+            // If the search text is empty, show all contacts
+            ContactsGroups = _unfilteredContactsGroups;
+        }
+        else
+        {
+            // If the search text is not empty, show only contacts that contain the search text
+            ContactsGroups = _unfilteredContactsGroups
+                .Where(g => g.Any(c => 
+                    c.FirstName.Contains(SearchText, StringComparison.OrdinalIgnoreCase) 
+                    || c.LastName.Contains(SearchText, StringComparison.OrdinalIgnoreCase)))
+                .ToList();
+        }
+    }
 }
