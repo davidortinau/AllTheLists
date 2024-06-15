@@ -43,6 +43,11 @@
                 Text="Shopping" 
                 Clicked="OnShopping_Clicked"
                 HorizontalOptions="Fill" />
+
+            <Button
+                Text="Address Book" 
+                Clicked="OnAddressBook_Clicked"
+                HorizontalOptions="Fill" />
         </VerticalStackLayout>
     </ScrollView>
 

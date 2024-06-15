@@ -48,4 +48,9 @@ public partial class MainPage : ContentPage
 	{
 		Navigation.PushAsync(new ShoppingPage());
 	}
+
+	private void OnAddressBook_Clicked(object sender, EventArgs e)
+	{
+		Navigation.PushAsync(new AddressBookPage());
+	}
 }
