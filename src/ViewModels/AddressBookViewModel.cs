@@ -1,9 +1,11 @@
 ﻿using System.Collections.ObjectModel;
 using System.Diagnostics;
 using AllTheLists.Models;
+using AllTheLists.Services;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Microsoft.Maui.Adapters;
+using Contact = AllTheLists.Models.Contact;
 
 namespace AllTheLists.ViewModels;
 
@@ -11,7 +13,6 @@ public partial class AddressBookViewModel : ObservableObject
 {
     
     private List<Contact> _contacts;
-    public ObservableCollectionAdapter<Contact> ContactsAdapter { get; private set; }
 
     [ObservableProperty]
     private List<ContactsGroup> _contactsGroups;
@@ -20,9 +21,8 @@ public partial class AddressBookViewModel : ObservableObject
 
     public AddressBookViewModel()
     {
-        _contacts = App.GenerateContacts().OrderBy(c => c.LastName).ThenBy(c => c.FirstName).ToList();
-        // ContactsAdapter = new ObservableCollectionAdapter<Contact>(Contacts);
-
+        _contacts = MockDataService.GenerateContacts().OrderBy(c => c.LastName).ThenBy(c => c.FirstName).ToList();
+        
         ContactsGroups = new List<ContactsGroup>();
 
         var groupedContacts = _contacts.GroupBy(c => c.LastName[0]).OrderBy(g => g.Key);
@@ -57,8 +57,8 @@ public partial class AddressBookViewModel : ObservableObject
             // If the search text is not empty, show only contacts that contain the search text
             ContactsGroups = _unfilteredContactsGroups
                 .Where(g => g.Any(c => 
-                    c.FirstName.Contains(SearchText, StringComparison.OrdinalIgnoreCase) 
-                    || c.LastName.Contains(SearchText, StringComparison.OrdinalIgnoreCase)))
+                    c.FirstName.Contains(SearchText, StringComparison.InvariantCultureIgnoreCase) 
+                    || c.LastName.Contains(SearchText, StringComparison.InvariantCultureIgnoreCase)))
                 .ToList();
         }
     }

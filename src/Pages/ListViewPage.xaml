@@ -4,7 +4,7 @@
              xmlns:m="clr-namespace:AllTheLists.Models"
              xmlns:ffimageloading="clr-namespace:FFImageLoading.Maui;assembly=FFImageLoading.Maui"
              xmlns:v="clr-namespace:AllTheLists.Views"
-             x:Class="AllTheLists.ListViewPage"
+             x:Class="AllTheLists.Pages.ListViewPage"
              Title="ListView">
     <ListView ItemsSource="{Binding Products}" HasUnevenRows="True">
         <ListView.ItemTemplate>

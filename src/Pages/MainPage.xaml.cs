@@ -1,4 +1,5 @@
-﻿using AllTheLists.Pages;
+﻿using AllTheLists.Models;
+using AllTheLists.Pages;
 
 namespace AllTheLists;
 
@@ -9,48 +10,14 @@ public partial class MainPage : ContentPage
 		InitializeComponent();
 	}
 
-	private void OnCollectionView_Clicked(object sender, EventArgs e)
+	private async void ListView_ItemSelected(object sender, EventArgs e)
 	{
-		Navigation.PushAsync(new CollectionViewPage());
+		var selectedItem = (sender as ListView).SelectedItem;
+		if (selectedItem is Sample sampleModel)
+		{
+			await Navigation.PushAsync((Page)Activator.CreateInstance(sampleModel.Page));
+		}
 	}
 
-	private void OnListView_Clicked(object sender, EventArgs e)
-	{
-		Navigation.PushAsync(new ListViewPage());
-	}
-
-	private void OnVirtualListView_Clicked(object sender, EventArgs e)
-	{
-		Navigation.PushAsync(new VirtualListViewPage());
-	}
-
-	private void OnVirtualizedListView_Clicked(object sender, EventArgs e)
-	{
-		Navigation.PushAsync(new VirtualizedListViewPage());
-	}
-
-	private void OnReviews_Clicked(object sender, EventArgs e)
-	{
-		Navigation.PushAsync(new ReviewsPage());
-	}
-
-	private void OnCheckIns_Clicked(object sender, EventArgs e)
-	{
-		Navigation.PushAsync(new CheckInsPage());
-	}
-
-	private void OnLearning_Clicked(object sender, EventArgs e)
-	{
-		Navigation.PushAsync(new LearningPage());
-	}
-
-	private void OnShopping_Clicked(object sender, EventArgs e)
-	{
-		Navigation.PushAsync(new ShoppingPage());
-	}
-
-	private void OnAddressBook_Clicked(object sender, EventArgs e)
-	{
-		Navigation.PushAsync(new AddressBookPage());
-	}
+	
 }

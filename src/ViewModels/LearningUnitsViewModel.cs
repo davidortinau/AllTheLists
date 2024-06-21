@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using AllTheLists.Models;
 using AllTheLists.Models.Learning;
+using AllTheLists.Services;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Microsoft.Maui.Adapters;
@@ -16,7 +17,7 @@ public partial class LearningUnitsViewModel : ObservableObject
 
     public LearningUnitsViewModel()
     {
-        Items = new ObservableCollection<Unit>(App.GenerateUnits());
+        Items = new ObservableCollection<Unit>(MockDataService.GenerateUnits());
         ItemsAdapter = new ObservableCollectionAdapter<Unit>(Items);
     }
 

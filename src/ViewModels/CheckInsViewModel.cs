@@ -1,6 +1,7 @@
 ﻿using System.Collections.ObjectModel;
 using System.Diagnostics;
 using AllTheLists.Models;
+using AllTheLists.Services;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Microsoft.Maui.Adapters;
@@ -15,7 +16,7 @@ public partial class CheckInsViewModel : ObservableObject
 
     public CheckInsViewModel()
     {
-        CheckIns = new ObservableCollection<CheckIn>(App.GenerateCheckIns());
+        CheckIns = new ObservableCollection<CheckIn>(MockDataService.GenerateCheckIns());
         CheckInsAdapter = new ObservableCollectionAdapter<CheckIn>(CheckIns);
     }
 }

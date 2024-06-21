@@ -4,7 +4,7 @@
              xmlns:mpowerkit="clr-namespace:MPowerKit.VirtualizeListView;assembly=MPowerKit.VirtualizeListView"
              xmlns:ffimageloading="clr-namespace:FFImageLoading.Maui;assembly=FFImageLoading.Maui"
              xmlns:v="clr-namespace:AllTheLists.Views"
-             x:Class="AllTheLists.VirtualizedListViewPage"
+             x:Class="AllTheLists.Pages.VirtualizedListViewPage"
              xmlns:m="clr-namespace:AllTheLists.Models"
              Title="VirtualizedListView">
     <!-- <mpowerkit:VirtualizeListView x:Name="listView"

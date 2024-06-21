@@ -1,6 +1,7 @@
 ﻿using System.Collections.ObjectModel;
 using System.Diagnostics;
 using AllTheLists.Models;
+using AllTheLists.Services;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Microsoft.Maui.Adapters;
@@ -15,7 +16,7 @@ public partial class ProductsViewModel : ObservableObject
 
     public ProductsViewModel()
     {
-        Products = new ObservableCollection<Product>(App.GenerateProducts());
+        Products = new ObservableCollection<Product>(MockDataService.GenerateProducts());
         ProductsAdapter = new ObservableCollectionAdapter<Product>(Products);
     }
 

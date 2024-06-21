@@ -1,54 +1,30 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:m="clr-namespace:AllTheLists.Models"
+             xmlns:p="clr-namespace:AllTheLists.Pages"
              x:Class="AllTheLists.MainPage">
 
-    <ScrollView>
-        <VerticalStackLayout
-            Padding="15"
-            Spacing="25">
-            <Button
-                Text="CollectionView" 
-                Clicked="OnCollectionView_Clicked"
-                HorizontalOptions="Fill" />
-            <Button
-                Text="ListView" 
-                Clicked="OnListView_Clicked"
-                HorizontalOptions="Fill" />
-            <Button
-                Text="VirtualListView (Redth)" 
-                Clicked="OnVirtualListView_Clicked"
-                HorizontalOptions="Fill" />
-            <Button
-                Text="VirtualizedListView" 
-                Clicked="OnVirtualizedListView_Clicked"
-                HorizontalOptions="Fill" />
 
-            <Button
-                Text="Reviews" 
-                Clicked="OnReviews_Clicked"
-                HorizontalOptions="Fill" />
+    <ListView ItemSelected="ListView_ItemSelected">
+        <ListView.ItemsSource>
+            <x:Array Type="{x:Type m:Sample}">
+                <m:Sample Name="CollectionView" Page="{x:Type p:CollectionViewPage}" />
+                <m:Sample Name="ListView" Page="{x:Type p:ListViewPage}" />
+                <m:Sample Name="VirtualListView (Redth)" Page="{x:Type p:VirtualListViewPage}" />
+                <m:Sample Name="VirtualizedListView" Page="{x:Type p:VirtualizedListViewPage}" />
+                <m:Sample Name="Reviews" Page="{x:Type p:ReviewsPage}" />
+                <m:Sample Name="Check-ins" Page="{x:Type p:CheckInsPage}" />
+                <m:Sample Name="Learning" Page="{x:Type p:LearningPage}" />
+                <m:Sample Name="Shopping" Page="{x:Type p:ShoppingPage}" />
+                <m:Sample Name="Address Book" Page="{x:Type p:AddressBookPage}" />
+                <m:Sample Name="Who is Watching" Page="{x:Type p:WhoIsWatchingPage}" />
+                <m:Sample Name="Streaming Service" Page="{x:Type p:StreamingServicePage}" />
+                <m:Sample Name="Unified Inbox" Page="{x:Type p:InboxPage}" />
+            </x:Array>
+        </ListView.ItemsSource>
+    </ListView>
 
-            <Button
-                Text="Check-ins" 
-                Clicked="OnCheckIns_Clicked"
-                HorizontalOptions="Fill" />
-
-            <Button
-                Text="Learning" 
-                Clicked="OnLearning_Clicked"
-                HorizontalOptions="Fill" />
-
-            <Button
-                Text="Shopping" 
-                Clicked="OnShopping_Clicked"
-                HorizontalOptions="Fill" />
-
-            <Button
-                Text="Address Book" 
-                Clicked="OnAddressBook_Clicked"
-                HorizontalOptions="Fill" />
-        </VerticalStackLayout>
-    </ScrollView>
+    
 
 </ContentPage>

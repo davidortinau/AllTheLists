@@ -20,6 +20,9 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 
+		<MauiVersion>8.0.70-ci.net8.24320.1</MauiVersion>
+		<!-- <MauiVersion>9.0.0-preview.5.24307.10</MauiVersion> -->
+
 		<NoWarn>$(NoWarn);CS8618;CS8767;CS8603</NoWarn>
 
 		<!-- Display name -->
@@ -72,6 +75,7 @@
 		<MauiImage Include="Resources\Images\circle_check_solid.svg" TintColor="Green" />
 		<MauiImage Include="Resources\Images\circle_xmark_solid.svg" TintColor="Red" />
 		<MauiImage Include="Resources\Images\Avatars\*" />
+		<MauiImage Include="Resources\Images\Posters\*" />
 		<MauiImage Include="Resources\Images\Shoes\*" />
 		<MauiImage Update="Resources\Images\dotnet_bot.png" Resize="True" BaseSize="300,185" />
 		
@@ -85,8 +89,8 @@
 	<ItemGroup>
 		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
 		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
-		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="9.0.0-preview.4.24260.3" />
-		<PackageReference Include="Redth.Maui.VirtualListView" Version="0.3.2" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="9.0.0-preview.5.24306.7" />
+		<PackageReference Include="Redth.Maui.VirtualListView" Version="0.4.0" />
 		<PackageReference Include="MPowerKit.VirtualizeListView" Version="1.1.1" />
 		<PackageReference Include="FFImageLoading.Maui" Version="1.2.5" />
 		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />

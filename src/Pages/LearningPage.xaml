@@ -7,7 +7,18 @@
              x:Class="AllTheLists.Pages.LearningPage"
              Background="#EAE8EA"
              Title="LearningPage">
-    <CollectionView 
+    <ScrollView>
+        <VerticalStackLayout Spacing="10" 
+            BindableLayout.ItemsSource="{Binding Items}">
+            <BindableLayout.ItemTemplate>
+                <DataTemplate>
+                    <v:LearningUnitListItem />
+                </DataTemplate>
+            </BindableLayout.ItemTemplate>
+        </VerticalStackLayout>
+    </ScrollView>
+
+    <!-- <CollectionView 
         ItemSizingStrategy="MeasureAllItems" 
         ItemsSource="{Binding Items}">
         <CollectionView.ItemsLayout>
@@ -20,5 +31,5 @@
                 <v:LearningUnitListItem />
             </DataTemplate>
         </CollectionView.ItemTemplate>
-    </CollectionView>
+    </CollectionView> -->
 </ContentPage>

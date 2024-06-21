@@ -1,6 +1,6 @@
 using AllTheLists.ViewModels;
 
-namespace AllTheLists;
+namespace AllTheLists.Pages;
 
 public partial class VirtualizedListViewPage : ContentPage
 {

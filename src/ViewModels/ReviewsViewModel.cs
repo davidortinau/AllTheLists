@@ -1,6 +1,7 @@
 ﻿using System.Collections.ObjectModel;
 using System.Diagnostics;
 using AllTheLists.Models;
+using AllTheLists.Services;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Microsoft.Maui.Adapters;
@@ -15,7 +16,7 @@ public partial class ReviewsViewModel : ObservableObject
 
     public ReviewsViewModel()
     {
-        Reviews = new ObservableCollection<Review>(App.GenerateReviews());
+        Reviews = new ObservableCollection<Review>(MockDataService.GenerateReviews());
         ReviewsAdapter = new ObservableCollectionAdapter<Review>(Reviews);
     }
 

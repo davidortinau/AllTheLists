@@ -5,7 +5,7 @@
              xmlns:m="clr-namespace:AllTheLists.Models"
              xmlns:ffimageloading="clr-namespace:FFImageLoading.Maui;assembly=FFImageLoading.Maui"
              xmlns:v="clr-namespace:AllTheLists.Views"
-             x:Class="AllTheLists.VirtualListViewPage"
+             x:Class="AllTheLists.Pages.VirtualListViewPage"
              Title="VirtualListView">
     <!-- <vlv:VirtualListView Adapter="{Binding ProductsAdapter}">
         <vlv:VirtualListView.ItemTemplate>

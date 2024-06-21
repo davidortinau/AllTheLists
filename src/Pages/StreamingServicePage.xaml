@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:AllTheLists.ViewModels"
+             xmlns:m="clr-namespace:AllTheLists.Models"
+             xmlns:v="clr-namespace:AllTheLists.Views"
+             x:DataType="vm:StreamingServiceViewModel"
+             x:Class="AllTheLists.Pages.StreamingServicePage"
+             Title="StreamingServicePage">
+    <ScrollView>
+        <Grid RowDefinitions="300,Auto,Auto" RowSpacing="12">
+            <v:FeaturedCarousel Margin="0,16,0,0" />
+            <Label Text="Next section" Grid.Row="1" />
+        </Grid> 
+
+    </ScrollView>
+</ContentPage>

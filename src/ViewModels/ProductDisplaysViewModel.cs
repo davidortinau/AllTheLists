@@ -1,6 +1,7 @@
 ﻿using System.Collections.ObjectModel;
 using System.Diagnostics;
 using AllTheLists.Models;
+using AllTheLists.Services;
 using CommunityToolkit.Maui.Core.Extensions;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
@@ -20,7 +21,7 @@ public partial class ProductDisplaysViewModel : ObservableObject
 
     public ProductDisplaysViewModel()
     {
-        Products = App.GenerateProductDisplays();
+        Products = MockDataService.GenerateProductDisplays();
         VisibleProducts = Products.Take(16).ToObservableCollection();
     }
 

@@ -21,6 +21,8 @@ public static class MauiProgram
 			.ConfigureFonts(fonts =>
 			{
 				fonts.AddFont("fa_solid.ttf", "FontAwesome");
+				fonts.AddFont("fabmdl2.ttf", "Fabric");
+				fonts.AddFont("FluentSystemIcons-Regular.ttf", "FluentUI");
 			});
 
 #if DEBUG
