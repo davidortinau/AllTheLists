@@ -3,6 +3,7 @@ using Microsoft.Extensions.Logging;
 using MPowerKit.VirtualizeListView;
 using CommunityToolkit.Maui;
 using RatingControlMaui;
+using AlohaKit.Layouts.Hosting;
 
 namespace AllTheLists;
 
@@ -18,6 +19,7 @@ public static class MauiProgram
 			.UseMPowerKitListView()
 			.UseFFImageLoading()		
 			.UseRatingControl()	
+			.UseAlohaKitLayouts()
 			.ConfigureFonts(fonts =>
 			{
 				fonts.AddFont("fa_solid.ttf", "FontAwesome");

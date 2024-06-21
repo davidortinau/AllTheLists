@@ -4,13 +4,99 @@
              xmlns:vm="clr-namespace:AllTheLists.ViewModels"
              xmlns:m="clr-namespace:AllTheLists.Models"
              xmlns:v="clr-namespace:AllTheLists.Views"
+             xmlns:mct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:ak="clr-namespace:AlohaKit.Layouts;assembly=AlohaKit.Layouts"
              x:DataType="vm:StreamingServiceViewModel"
              x:Class="AllTheLists.Pages.StreamingServicePage"
              Title="StreamingServicePage">
     <ScrollView>
-        <Grid RowDefinitions="300,Auto,Auto" RowSpacing="12">
+        <Grid RowDefinitions="500,Auto,Auto" RowSpacing="16">
             <v:FeaturedCarousel Margin="0,16,0,0" />
-            <Label Text="Next section" Grid.Row="1" />
+
+            <FlexLayout Grid.Row="1" Margin="16" Direction="Row" Wrap="Wrap"
+            JustifyContent="SpaceAround"
+            VerticalOptions="Start" MaximumHeightRequest="200">
+            
+                <Border StrokeShape="RoundRectangle 8" Stroke="#f1f1f1"
+                FlexLayout.Basis="30%"
+                    Background="#1d1d1d" HeightRequest="80">
+                    <Label Text="Disney" HorizontalOptions="Center" VerticalOptions="Center" />
+                </Border> 
+                <Border StrokeShape="RoundRectangle 8" Stroke="#f1f1f1"
+                FlexLayout.Basis="30%"
+                    Background="#1d1d1d" HeightRequest="80">
+                    <Label Text="Pixar" HorizontalOptions="Center" VerticalOptions="Center" />
+                </Border> 
+                <Border StrokeShape="RoundRectangle 8" Stroke="#f1f1f1"
+                FlexLayout.Basis="30%"
+                    Background="#1d1d1d" HeightRequest="80">
+                    <Label Text="Marvel" HorizontalOptions="Center" VerticalOptions="Center" />
+                </Border> 
+                <Border StrokeShape="RoundRectangle 8" Stroke="#f1f1f1"
+                FlexLayout.Basis="30%"
+                    Background="#1d1d1d" HeightRequest="80">
+                    <Label Text="Star Wars" HorizontalOptions="Center" VerticalOptions="Center" />
+                </Border> 
+                <Border StrokeShape="RoundRectangle 8" Stroke="#f1f1f1"
+                FlexLayout.Basis="30%"
+                    Background="#1d1d1d" HeightRequest="80">
+                    <Label Text="National" HorizontalOptions="Center" VerticalOptions="Center" />
+                </Border> 
+                <Border StrokeShape="RoundRectangle 8" Stroke="#f1f1f1"
+                FlexLayout.Basis="30%"
+                    Background="#1d1d1d" HeightRequest="80">
+                    <Label Text="hulu" HorizontalOptions="Center" VerticalOptions="Center" />
+                </Border> 
+            </FlexLayout>
+
+            <VerticalStackLayout Grid.Row="2" Spacing="8" Margin="16,0">
+                <Label Text="Recommended For You"/>
+                <CollectionView HeightRequest="120" ItemsSource="{Binding Featured}" HorizontalScrollBarVisibility="Never">
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout Orientation="Horizontal" ItemSpacing="8"/>
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Border StrokeShape="RoundRectangle 8" Stroke="#f1f1f1"
+                                Background="#1d1d1d" HeightRequest="120" WidthRequest="80">
+                                <Image Source="{Binding .}" Aspect="AspectFill" VerticalOptions="Fill" HorizontalOptions="Fill" />
+                            </Border>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+                <Label Text="Newly Added"/>
+                <CollectionView HeightRequest="120" ItemsSource="{Binding Featured}" HorizontalScrollBarVisibility="Never">
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout Orientation="Horizontal" ItemSpacing="8"/>
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Border StrokeShape="RoundRectangle 8" Stroke="#f1f1f1"
+                                Background="#1d1d1d" HeightRequest="120" WidthRequest="80">
+                                <Image Source="{Binding .}" Aspect="AspectFill" VerticalOptions="Fill" HorizontalOptions="Fill" />
+                            </Border>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+                <Label Text="Continue Watching"/>
+                <CollectionView HeightRequest="120" ItemsSource="{Binding Featured}" HorizontalScrollBarVisibility="Never">
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout Orientation="Horizontal" ItemSpacing="8"/>
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Border StrokeShape="RoundRectangle 8" Stroke="#f1f1f1"
+                                Background="#1d1d1d" HeightRequest="120" WidthRequest="80">
+                                <Image Source="{Binding .}" Aspect="AspectFill" VerticalOptions="Fill" HorizontalOptions="Fill" />
+                            </Border>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </VerticalStackLayout>
+
+            
         </Grid> 
 
     </ScrollView>

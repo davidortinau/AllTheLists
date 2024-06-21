@@ -3,10 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AllTheLists.Views.FeaturedCarousel">
     <CarouselView ItemsSource="{Binding Featured}" Loop="True" 
-        PeekAreaInsets="24" VerticalOptions="Start"
-        HeightRequest="300">
+        PeekAreaInsets="54" VerticalOptions="Start"
+        HeightRequest="500">
         <CarouselView.ItemsLayout>
-            <LinearItemsLayout ItemSpacing="20"
+            <LinearItemsLayout ItemSpacing="50"
                                 SnapPointsAlignment="Center"
                                 SnapPointsType="Mandatory"
                                 Orientation="Horizontal"/>

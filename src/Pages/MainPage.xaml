@@ -23,6 +23,11 @@
                 <m:Sample Name="Unified Inbox" Page="{x:Type p:InboxPage}" />
             </x:Array>
         </ListView.ItemsSource>
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <TextCell Text="{Binding Name}" />
+            </DataTemplate>
+        </ListView.ItemTemplate>
     </ListView>
 
     
