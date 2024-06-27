@@ -10,13 +10,25 @@ First I want to get out of the way some general thoughts.
 
 **UX > UI** I see a lot of apps struggling with list scenarios because they jam a ton of UI into them to get the job done, rather than leaning on good UX principles. Do you really need a whole chat experience in every row of the list, or could you navigate to another page? Perhaps you could use a modal experience or a bottom sheet? Anytime your mobile UI have more than 1 clear call to action, then you're in danger of the UI being less efficient instead of more efficient for your user. Solve problems with UX before UI.
 
-## .NET MAUI List Controls
+## Overview of .NET MAUI List Controls
 
-In my sample I've use 3 built-in controls, and 2 community controls that all demonstrate different approaches with strengths and weaknesses. For the built in controls we have `CollectionView`, `ListView`, and `BindableLayout`, and for the community controls I chose `VirtualListView` and `VirtualizedListView`. 
+In my sample I've used 3 built-in controls, and 2 community controls that all demonstrate different approaches with strengths and weaknesses. .NET MAUI provides `CollectionView`, `ListView`, and `BindableLayout`. From the community I chose `VirtualListView` and `VirtualizedListView`. There are many other options, a few of which I list at the end for you to evaluate yourself.
 
-> CompressedLayout
+|               | CollectionView | ListView | BindableLayout | VirtualLayout | VirtualizedLayout |
+|---------------|----------------|----------|----------------|---------------|-------------------|
+| **Virtualized**   | Yes            | Yes      | No             | Yes           | Yes               |
+| **Pull-to-Refresh** | Yes - with RefreshView | Yes | Yes - with RefreshView |                 |                   |
+| **Layout - Vertical** | Yes          | Yes      | Yes            |               |                   |
+| **Layout - Horizontal** | Yes        | No       | Yes            |               |                   |
+| **Layout - Grid** | Yes              | No       | Yes            |               |                   |
+| **Layout - Custom** | Yes            | No       | Yes            |               |                   |
+| **Behavior**      | Platform specific | Platform specific | Cross-platform | Platform specific | Cross-platform |
+| **Grouped Data**  | Yes              | Yes      | No             | Yes           |                   |
+| **Header / Footer** | Yes            | Yes      | No             | Yes           |                   |
+| **Context Menu Items** | Yes - with SwipeView | Yes | Yes - with SwipeView |               |                   |
+| **Predefined Templates** | No         | Yes      | No             | No            | No                |
 
 
-### CollectionView
+## Layout 1: 
 
 This is the most modern and feature rich control of the bunch. What sets it apart is the ability to do multiple layouts and infinite scrolling.
