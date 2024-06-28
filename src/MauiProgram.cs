@@ -5,6 +5,7 @@ using CommunityToolkit.Maui;
 using RatingControlMaui;
 using AlohaKit.Layouts.Hosting;
 using Effects;
+using The49.Maui.BottomSheet;
 
 namespace AllTheLists;
 
@@ -21,6 +22,7 @@ public static class MauiProgram
 			.UseFFImageLoading()		
 			.UseRatingControl()	
 			.UseAlohaKitLayouts()
+			.UseBottomSheet()
 			.ConfigureFonts(fonts =>
 			{
 				fonts.AddFont("fa_solid.ttf", "FontAwesome");

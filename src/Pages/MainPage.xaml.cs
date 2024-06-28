@@ -1,5 +1,7 @@
-﻿using AllTheLists.Models;
+﻿using System.Diagnostics;
+using AllTheLists.Models;
 using AllTheLists.Pages;
+using AllTheLists.Views;
 
 namespace AllTheLists;
 
@@ -22,6 +24,16 @@ public partial class MainPage : ContentPage
 			await Navigation.PushAsync((ContentPage)Activator.CreateInstance(itemData.Page));
 		}
 		// }
+	}
+
+	async void Actions_Tapped(object sender, EventArgs e)
+	{
+		try{
+			var sheet = new SampleBottomSheet();        
+			await sheet.ShowAsync(App.Current.MainPage.Window);
+		}catch(Exception ooops){
+			Debug.WriteLine(ooops.Message);
+		}
 	}
 
 	
