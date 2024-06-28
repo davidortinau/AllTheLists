@@ -4,6 +4,7 @@ using MPowerKit.VirtualizeListView;
 using CommunityToolkit.Maui;
 using RatingControlMaui;
 using AlohaKit.Layouts.Hosting;
+using Effects;
 
 namespace AllTheLists;
 
@@ -25,6 +26,12 @@ public static class MauiProgram
 				fonts.AddFont("fa_solid.ttf", "FontAwesome");
 				fonts.AddFont("fabmdl2.ttf", "Fabric");
 				fonts.AddFont("FluentSystemIcons-Regular.ttf", "FluentUI");
+			})
+			.ConfigureEffects(effects =>
+			{
+                #if IOS || MACCATALYST
+				effects.Add<ContentInsetAdjustmentBehaviorRoutingEffect, ContentInsetAdjustmentBehaviorPlatformEffect>();
+                #endif
 			});
 
 #if DEBUG

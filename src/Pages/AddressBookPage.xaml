@@ -14,7 +14,9 @@
             Placeholder="Search" 
             Text="{Binding SearchText, Mode=TwoWay}"
             SearchCommand="{Binding SearchCommand}" 
-            VerticalOptions="Start" />
+            VerticalOptions="Start" 
+            BackgroundColor="{AppThemeBinding Light=White, Dark=Black}"
+            />
 
         <ListView 
             Grid.Row="1"

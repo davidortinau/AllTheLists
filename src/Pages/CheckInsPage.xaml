@@ -6,8 +6,8 @@
              xmlns:v="clr-namespace:AllTheLists.Views"
              x:DataType="vm:CheckInsViewModel"
              x:Class="AllTheLists.Pages.CheckInsPage"
-             Title="Check-ins"
-             Background="#f1f1f1">
+             Background="{AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource OffBlack}}"
+             Title="Check-ins">
     <CollectionView 
         ItemsSource="{Binding CheckIns}">
         <CollectionView.ItemsLayout>

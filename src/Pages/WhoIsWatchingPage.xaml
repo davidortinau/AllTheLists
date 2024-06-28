@@ -7,7 +7,7 @@
              x:Class="AllTheLists.Pages.WhoIsWatchingPage"
              Title="WhoIsWatchingPage">
     <FlexLayout Direction="Row" JustifyContent="Center" Wrap="Wrap"
-        BindableLayout.ItemsSource="{Binding Contacts}" VerticalOptions="Center">
+        BindableLayout.ItemsSource="{Binding WhoIsWatching}" VerticalOptions="Center">
         <BindableLayout.ItemTemplate>
             <DataTemplate x:DataType="m:Contact">
                 <VerticalStackLayout HorizontalOptions="Center" Spacing="8" FlexLayout.Basis="40%" FlexLayout.AlignSelf="Start">

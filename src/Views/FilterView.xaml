@@ -6,23 +6,29 @@
     <ContentView.Resources>
         <Style x:Key="FilterButtonStyle" TargetType="Button">
             <Setter Property="BorderWidth" Value="1" />
-            <Setter Property="BorderColor" Value="Silver" />
+            <Setter Property="BorderColor" Value="{AppThemeBinding Light={StaticResource Gray900}, Dark={StaticResource Gray500}}" />
             <Setter Property="CornerRadius" Value="0" />
-            <Setter Property="Background" Value="White" />
-            <Setter Property="TextColor" Value="Silver" />
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Gray900}, Dark={StaticResource Gray500}}" />
             <Setter Property="FontSize" Value="10" />
             <Setter Property="Padding" Value="8" />
             
         </Style>
     </ContentView.Resources>
 
-    <Grid ColumnDefinitions="Auto,*" ColumnSpacing="16" Margin="16">
+    <Grid ColumnDefinitions="Auto,*" ColumnSpacing="16" Margin="16,16,-16,16">
         <Image 
             HeightRequest="24" 
             WidthRequest="24" 
             Aspect="Center"
-            Source="{FontImage FontFamily=FontAwesome, Glyph={x:Static f:FontAwesome.Filter}, Size=14, Color=Black}" 
-            Background="Transparent" />
+            Background="Transparent">
+            <Image.Source>
+                <FontImageSource FontFamily="FontAwesome" 
+                    Glyph="{x:Static f:FontAwesome.Filter}" 
+                    Size="14" 
+                    Color="{AppThemeBinding Light={StaticResource Gray900}, Dark={StaticResource Gray300}}"/>
+            </Image.Source>
+            </Image>
         <ScrollView Orientation="Horizontal" Grid.Column="1" HorizontalScrollBarVisibility="Never">
             <HorizontalStackLayout Spacing="8">
                 <Button Text="705" Style="{StaticResource FilterButtonStyle}" />

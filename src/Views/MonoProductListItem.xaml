@@ -13,7 +13,8 @@
         <mct:IsStringNotNullOrWhiteSpaceConverter x:Key="IsStringNotNullOrWhiteSpaceConverter" />
     </ContentView.Resources>
 
-    <Grid Padding="8" RowDefinitions="*,Auto" HeightRequest="240" Background="#EBEFF2">
+    <Grid Padding="8" RowDefinitions="*,Auto" HeightRequest="240" 
+        Background="{AppThemeBinding Light=#EBEFF2,Dark={StaticResource Gray900}}">
         <Image 
             x:Name="ProductImage"
             Source="{Binding Image}" 
@@ -22,14 +23,24 @@
             Aspect="AspectFit"   
         />
 
-        <Image Background="Transparent" Source="{FontImage FontFamily=FontAwesome, Glyph={x:Static f:FontAwesome.Heart}, Color=Black,Size=14}"
-            HorizontalOptions="End" VerticalOptions="Start" />
+        <Image Background="Transparent" 
+            HorizontalOptions="End" VerticalOptions="Start">
+            <Image.Source>
+                <FontImageSource Glyph="{x:Static f:FontAwesome.Heart}" 
+                    FontFamily="FontAwesome" 
+                    Size="14" 
+                    Color="{AppThemeBinding Light=Black,Dark=White}">
+                </FontImageSource>
+            </Image.Source>
+            </Image>
 
         <VerticalStackLayout Grid.Row="1" CompressedLayout.IsHeadless="True" Spacing="4" VerticalOptions="End">
             <Label Text="{Binding SalesCategory}" FontSize="12" IsVisible="{Binding SalesCategory,Converter={StaticResource IsStringNotNullOrWhiteSpaceConverter}}"
-                Background="White" Padding="4" TextColor="Black" FontAttributes="Italic" 
+                Background="White" Padding="4" 
+                TextColor="Black" FontAttributes="Italic" 
                 HorizontalOptions="Start"/>
-            <Label Text="{Binding Price, StringFormat='{0:C}'}" FontSize="12" 
+            <Label Text="{Binding Price, StringFormat='{0:C}'}" 
+                FontSize="12" 
                 Background="White" Padding="4" TextColor="Black"
                 HorizontalOptions="Start"/>
             <Label Text="{Binding Name}" FontSize="12" FontAttributes="Bold" 
@@ -39,7 +50,14 @@
 
         <HorizontalStackLayout Grid.Row="1" HorizontalOptions="End" VerticalOptions="End" Spacing="4">
             <Label Text="{Binding ColorWays, StringFormat='+{0}'}" FontSize="10"/>
-            <Image Source="{FontImage FontFamily=FontAwesome, Glyph={x:Static f:FontAwesome.PaintBrush}, Color=Black, Size=10}" />
+            <Image>
+                <Image.Source>
+                    <FontImageSource Glyph="{x:Static f:FontAwesome.PaintBrush}" 
+                        FontFamily="FontAwesome" 
+                        Size="10" 
+                        Color="{AppThemeBinding Light=Black,Dark=White}"/>
+                </Image.Source>
+            </Image>
         </HorizontalStackLayout> 
     </Grid>
 </ContentView>

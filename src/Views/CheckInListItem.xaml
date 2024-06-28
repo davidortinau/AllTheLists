@@ -18,7 +18,8 @@
         </ResourceDictionary>
     </ContentView.Resources>
 
-    <Grid RowDefinitions="Auto,Auto,60" Background="White">
+    <Grid RowDefinitions="Auto,Auto,60" 
+        Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Gray600}}">
         <Image 
             Source="{Binding Product.ImageUrl}" 
             VerticalOptions="Start" 
@@ -63,10 +64,10 @@
         <Border 
             Grid.Row="1"
             TranslationY="{Binding Product.HasImage, Converter={StaticResource BoolToIntConverter}}"
-            Background="White"
+            Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource OffBlack}}"
             Padding="16,16,16,0" 
             Margin="16" 
-            Stroke="LightGray" 
+            Stroke="{AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource Gray900}}" 
             StrokeShape="RoundRectangle 8"
             StrokeThickness="1">
             <Grid RowDefinitions="Auto,80">
@@ -101,14 +102,27 @@
                             ColumnDefinitions="*,1,*"
                             HorizontalOptions="Fill">
                         <Button Text="Comment" 
-                            Background="Transparent" TextColor="Black" 
-                            ImageSource="{FontImage Glyph={x:Static f:FontAwesome.CommentAlt}, Color=Black, FontFamily=FontAwesome, Size=18}" />
+                            Background="Transparent" 
+                            TextColor="{AppThemeBinding Light=Black, Dark=White}" >
+                            <Button.ImageSource>
+                                <FontImageSource Glyph="{x:Static f:FontAwesome.CommentAlt}" 
+                                    Color="{AppThemeBinding Light=Black, Dark=White}" 
+                                    FontFamily="FontAwesome" 
+                                    Size="18" />
+                            </Button.ImageSource>
+                        </Button>
                         <Button Text="Toast"
                             Grid.Column="2"
-                            Background="Transparent" TextColor="Black" Margin="10,0,0,0" 
-                            ImageSource="{FontImage Glyph={x:Static f:FontAwesome.Beer}, Color=Black, FontFamily=FontAwesome, Size=18}" />
-                        <BoxView BackgroundColor="LightGray" WidthRequest="1" VerticalOptions="Fill" Grid.Column="1"  />
-                        <BoxView BackgroundColor="LightGray" HeightRequest="1" HorizontalOptions="Fill" Grid.ColumnSpan="3" VerticalOptions="Start" Margin="-16,0"  />
+                            Background="Transparent" TextColor="{AppThemeBinding Light=Black, Dark=White}" Margin="10,0,0,0" >
+                            <Button.ImageSource>
+                                <FontImageSource Glyph="{x:Static f:FontAwesome.Beer}" 
+                                    Color="{AppThemeBinding Light=Black, Dark=White}" 
+                                    FontFamily="FontAwesome" 
+                                    Size="18" />
+                            </Button.ImageSource>
+                        </Button>
+                        <BoxView Color="{AppThemeBinding Light={StaticResource Gray900}, Dark={StaticResource Gray300}}" WidthRequest="1" VerticalOptions="Fill" Grid.Column="1"  />
+                        <BoxView Color="{AppThemeBinding Light={StaticResource Gray900}, Dark={StaticResource Gray300}}" HeightRequest="1" HorizontalOptions="Fill" Grid.ColumnSpan="3" VerticalOptions="Start" Margin="-16,0"  />
                         <!-- <BoxView BackgroundColor="LightGray" HeightRequest="1" HorizontalOptions="Fill" Grid.ColumnSpan="3" VerticalOptions="End" Margin="-16,0"  /> -->
                     </Grid>
 
@@ -130,6 +144,6 @@
                     Grid.Row="2"
                     Background="Transparent" 
                     Margin="0,0,16,16"
-                    TextColor="Black" />
+                    TextColor="{AppThemeBinding Light=Black, Dark=White}" />
     </Grid>
 </ContentView>

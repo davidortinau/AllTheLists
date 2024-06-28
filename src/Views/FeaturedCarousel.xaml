@@ -6,7 +6,7 @@
         PeekAreaInsets="54" VerticalOptions="Start"
         HeightRequest="500">
         <CarouselView.ItemsLayout>
-            <LinearItemsLayout ItemSpacing="50"
+            <LinearItemsLayout ItemSpacing="20"
                                 SnapPointsAlignment="Center"
                                 SnapPointsType="Mandatory"
                                 Orientation="Horizontal"/>

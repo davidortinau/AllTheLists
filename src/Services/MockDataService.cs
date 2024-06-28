@@ -4,6 +4,7 @@ using AllTheLists.Models;
 using AllTheLists.Models.Learning;
 using Fonts;
 using Contact = AllTheLists.Models.Contact;
+using System.Linq;
 
 namespace AllTheLists.Services;
 
@@ -624,6 +625,18 @@ public static class MockDataService
         "poster_03_portrait.png",
         "poster_04_portrait.png",
         "poster_05_portrait.png",
+        "action_adventure.png",
+        "action_heist.png",
+        "action_martialarts.png",
+        "action_military.png",
+        "action_scifi.png",
+        "action_movie.png",
+        "reality_cooking.png",
+        "reality_makeover.png",
+        "reality_movie.png",
+        "reality_survival.png",
+        "reality_talent.png",
+        "reality_travel.png"
     };
 
     private static string[] Categories = new string[]{
@@ -649,5 +662,65 @@ public static class MockDataService
         _movies = PostersPortrait.ToList();
 
         return _movies;
+    }
+
+    private static List<string> _continueWatching;
+    public static List<string> GenerateContinueWatching()
+    {
+        if (_continueWatching != null)
+            return _continueWatching;
+
+        _continueWatching = PostersLandscape.ToList();
+        _continueWatching.Sort((a, b) => Random.Shared.Next(-1, 1));
+
+        return _continueWatching;
+    }
+
+    private static List<string> _recomendedShows;
+    public static List<string> GenerateRecommendedShows()
+    {
+        if (_recomendedShows != null)
+            return _recomendedShows;
+
+        _recomendedShows = PostersPortrait.ToList();
+        _recomendedShows.Sort((a, b) => Random.Shared.Next(-1, 1));
+
+        return _recomendedShows;
+    }
+
+    private static List<string> _newShows;
+    public static List<string> GenerateNewShows()
+    {
+        if (_newShows != null)
+            return _newShows;
+
+        _newShows = PostersPortrait.ToList();
+        _newShows.Sort((a, b) => Random.Shared.Next(-1, 1));
+
+        return _newShows;
+    }
+
+    private static List<string> _actionShows;
+    public static List<string> GenerateActionShows()
+    {
+        if (_actionShows != null)
+            return _actionShows;
+
+        _actionShows = PostersPortrait.Where(p => p.Contains("action_")).ToList();
+        _actionShows.Sort((a, b) => Random.Shared.Next(-1, 1));
+
+        return _actionShows;
+    }
+
+    private static List<string> _realityShows;
+    public static List<string> GenerateRealityShows()
+    {
+        if (_realityShows != null)
+            return _realityShows;
+
+        _realityShows = PostersPortrait.Where(p => p.Contains("reality_")).ToList();
+        _realityShows.Sort((a, b) => Random.Shared.Next(-1, 1));
+
+        return _realityShows;
     }
 }

@@ -5,30 +5,45 @@
              xmlns:p="clr-namespace:AllTheLists.Pages"
              x:Class="AllTheLists.MainPage">
 
-
-    <ListView ItemSelected="ListView_ItemSelected">
-        <ListView.ItemsSource>
+    <CollectionView ItemSizingStrategy="MeasureAllItems" Margin="16">
+        <CollectionView.ItemsLayout>
+            <GridItemsLayout Orientation="Vertical"
+                VerticalItemSpacing="8" HorizontalItemSpacing="8"
+                Span="2" />
+        </CollectionView.ItemsLayout>
+        <CollectionView.ItemsSource>
             <x:Array Type="{x:Type m:Sample}">
-                <m:Sample Name="CollectionView" Page="{x:Type p:CollectionViewPage}" />
-                <m:Sample Name="ListView" Page="{x:Type p:ListViewPage}" />
-                <m:Sample Name="VirtualListView (Redth)" Page="{x:Type p:VirtualListViewPage}" />
-                <m:Sample Name="VirtualizedListView" Page="{x:Type p:VirtualizedListViewPage}" />
-                <m:Sample Name="Reviews" Page="{x:Type p:ReviewsPage}" />
-                <m:Sample Name="Check-ins" Page="{x:Type p:CheckInsPage}" />
-                <m:Sample Name="Learning" Page="{x:Type p:LearningPage}" />
-                <m:Sample Name="Shopping" Page="{x:Type p:ShoppingPage}" />
-                <m:Sample Name="Address Book" Page="{x:Type p:AddressBookPage}" />
-                <m:Sample Name="Who is Watching" Page="{x:Type p:WhoIsWatchingPage}" />
-                <m:Sample Name="Streaming Service" Page="{x:Type p:StreamingServicePage}" />
-                <m:Sample Name="Unified Inbox" Page="{x:Type p:InboxPage}" />
+                <m:Sample Name="CollectionView" Page="{x:Type p:CollectionViewPage}" Image="basic.png" />
+                <m:Sample Name="Reviews" Page="{x:Type p:ReviewsPage}" Image="reviews.png" />
+                <m:Sample Name="Check-ins" Page="{x:Type p:CheckInsPage}" Image="checkins.png" />
+                <m:Sample Name="Learning" Page="{x:Type p:LearningPage}" Image="learning.png" />
+                <m:Sample Name="ListView" Page="{x:Type p:ListViewPage}" Image="basic.png"/>
+                <m:Sample Name="Shopping" Page="{x:Type p:ShoppingPage}" Image="adidas.png" />
+                <m:Sample Name="Address Book" Page="{x:Type p:AddressBookPage}" Image="contacts.png" />
+                <m:Sample Name="VirtualListView (Redth)" Page="{x:Type p:VirtualListViewPage}" Image="basic.png"/>
+                <m:Sample Name="Who is Watching" Page="{x:Type p:WhoIsWatchingPage}" Image="whoiswatching.png" />
+                <m:Sample Name="Streaming Service" Page="{x:Type p:StreamingServicePage}" Image="streaming.png" />
+                <m:Sample Name="Unified Inbox" Page="{x:Type p:InboxPage}" Image="inbox.png" />
+                <m:Sample Name="VirtualizedListView" Page="{x:Type p:VirtualizedListViewPage}" Image="basic.png" />
             </x:Array>
-        </ListView.ItemsSource>
-        <ListView.ItemTemplate>
+        </CollectionView.ItemsSource>
+        <CollectionView.ItemTemplate>
             <DataTemplate>
-                <TextCell Text="{Binding Name}" />
+                <Grid RowDefinitions="Auto,30" ColumnDefinitions="*,30" RowSpacing="4" ColumnSpacing="4">
+                    <Border StrokeShape="RoundRectangle 16" StrokeThickness="0" Grid.ColumnSpan="2" VerticalOptions="Start">
+                        <Image Source="{Binding Image}" Aspect="AspectFit" HorizontalOptions="Fill" VerticalOptions="Start" />
+                    </Border>
+                    <Label 
+                        Grid.Row="1"
+                        Text="{Binding Name}" FontSize="10" Margin="8,0" />
+                    <Label Grid.Row="1" Grid.Column="1" Text="..."/>
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="ListView_ItemSelected" />
+                    </Grid.GestureRecognizers>
+                </Grid>
             </DataTemplate>
-        </ListView.ItemTemplate>
-    </ListView>
+        </CollectionView.ItemTemplate>
+    </CollectionView>
 
     
 

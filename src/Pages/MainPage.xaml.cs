@@ -12,11 +12,16 @@ public partial class MainPage : ContentPage
 
 	private async void ListView_ItemSelected(object sender, EventArgs e)
 	{
-		var selectedItem = (sender as ListView).SelectedItem;
-		if (selectedItem is Sample sampleModel)
+		// var selectedItem = (sender as ListView).SelectedItem;
+		// if (selectedItem is Sample sampleModel)
+		// {
+		var tappedView = (sender as View);
+		Sample itemData = (Sample)tappedView.BindingContext;
+		if (itemData.Page != null)
 		{
-			await Navigation.PushAsync((Page)Activator.CreateInstance(sampleModel.Page));
+			await Navigation.PushAsync((ContentPage)Activator.CreateInstance(itemData.Page));
 		}
+		// }
 	}
 
 	
