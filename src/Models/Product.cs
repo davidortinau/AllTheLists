@@ -19,4 +19,6 @@ public class Product
     public int ColorWays { get; set; } = 1;  
 
     public bool HasImage => !string.IsNullOrWhiteSpace(ImageUrl);
+
+    public string SocialImageUrl { get; internal set; }
 }

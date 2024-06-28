@@ -8,15 +8,12 @@
              x:Class="AllTheLists.Views.ProductListItem">
     <Grid Padding="16" ColumnDefinitions="80,*,40" ColumnSpacing="16">
         <ffimageloading:CachedImage Source="{Binding ImageUrl}" 
+            BackgroundColor="Black"
             HeightRequest="80" 
-            WidthRequest="80" 
-            LoadingPlaceholder="https://via.placeholder.com/80" 
-            ErrorPlaceholder="error.png">
-            <!-- <ffimageloading:CachedImage.GestureRecognizers>
-                <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:ProductsViewModel}}, Path=ItemTappedCommand,x:DataType=vm:ProductsViewModel}" CommandParameter="{Binding .}" />    
-            </ffimageloading:CachedImage.GestureRecognizers> -->
+            WidthRequest="80"  
+            LoadingPlaceholder="https://via.placeholder.com/80">
         </ffimageloading:CachedImage>
-        <VerticalStackLayout Grid.Column="1" CompressedLayout.IsHeadless="True" Padding="10">
+        <VerticalStackLayout Grid.Column="1" Padding="10">
             <Label Text="{Binding Name}" FontSize="16" />
             <Label Text="{Binding Price, StringFormat='Price: {0:C}'}" FontSize="14" />
             <Label Text="{Binding Description}" FontSize="12" LineBreakMode="TailTruncation" />

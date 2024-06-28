@@ -34,7 +34,7 @@
             </Image.Source>
             </Image>
 
-        <VerticalStackLayout Grid.Row="1" CompressedLayout.IsHeadless="True" Spacing="4" VerticalOptions="End">
+        <VerticalStackLayout Grid.Row="1" Spacing="4" VerticalOptions="End">
             <Label Text="{Binding SalesCategory}" FontSize="12" IsVisible="{Binding SalesCategory,Converter={StaticResource IsStringNotNullOrWhiteSpaceConverter}}"
                 Background="White" Padding="4" 
                 TextColor="Black" FontAttributes="Italic" 

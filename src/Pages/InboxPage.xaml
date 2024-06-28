@@ -45,7 +45,7 @@
                     </BindableLayout.ItemsSource>
                     <BindableLayout.ItemTemplate>
                         <DataTemplate>
-                            <Grid ColumnDefinitions="60,*,100,50" RowDefinitions="40,1" CompressedLayout.IsHeadless="True">
+                            <Grid ColumnDefinitions="60,*,100,50" RowDefinitions="40,1">
                                 <Image Aspect="Center" HorizontalOptions="Center" VerticalOptions="Center">
                                     <Image.Source>
                                         <FontImageSource Glyph="{Binding Icon}" 
@@ -72,7 +72,7 @@
 
             <mct:Expander>
                 <mct:Expander.Header>
-                    <Grid ColumnDefinitions="*,100,50" RowDefinitions="40" CompressedLayout.IsHeadless="True">
+                    <Grid ColumnDefinitions="*,100,50" RowDefinitions="40">
                         <Label Text="Ortinau" Grid.Column="0" FontSize="Subtitle" VerticalOptions="Center" />
                         <Label Text="38386" Grid.Column="1" 
                             Style="{StaticResource SecondaryLabel}"
@@ -106,7 +106,7 @@
                     </BindableLayout.ItemsSource>
                     <BindableLayout.ItemTemplate>
                         <DataTemplate>
-                            <Grid ColumnDefinitions="60,*,100,50" RowDefinitions="40,1" CompressedLayout.IsHeadless="True">
+                            <Grid ColumnDefinitions="60,*,100,50" RowDefinitions="40,1">
                                 <Image Aspect="Center" HorizontalOptions="Center" VerticalOptions="Center">
                                     <Image.Source>
                                         <FontImageSource Glyph="{Binding Icon}" 
@@ -134,7 +134,7 @@
             </mct:Expander>
 
             
-            <Grid ColumnDefinitions="*,100,50" RowDefinitions="40" CompressedLayout.IsHeadless="True">
+            <Grid ColumnDefinitions="*,100,50" RowDefinitions="40">
                 <Label Text="Simply Profound" Grid.Column="0" FontSize="Subtitle" VerticalOptions="Center" />
                 <Label Text="35166" Grid.Column="1" 
                     Style="{StaticResource SecondaryLabel}"
@@ -144,7 +144,7 @@
                     VerticalOptions="Center"
                     FontSize="14" FontFamily="FluentUI" HorizontalOptions="Center" />
             </Grid>
-            <Grid ColumnDefinitions="*,100,50" RowDefinitions="40" CompressedLayout.IsHeadless="True">
+            <Grid ColumnDefinitions="*,100,50" RowDefinitions="40">
                 <Label Text="Gmail" Grid.Column="0" FontSize="Subtitle" VerticalOptions="Center" />
                 <Label Text="1082" Grid.Column="1" 
                     Style="{StaticResource SecondaryLabel}"

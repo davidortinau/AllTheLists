@@ -12,9 +12,7 @@
             <DataTemplate x:DataType="m:Contact">
                 <VerticalStackLayout HorizontalOptions="Center" Spacing="8" FlexLayout.Basis="40%" FlexLayout.AlignSelf="Start">
                     <Image Source="{Binding ProfilePicture}" WidthRequest="80" HeightRequest="80" Aspect="AspectFill"
-                        BackgroundColor="Silver"
-                    >
-                        <Image.Clip>
+                        BackgroundColor="Transparent">                        <Image.Clip>
                             <EllipseGeometry Center="40, 40" RadiusX="40" RadiusY="40" />
                         </Image.Clip>
                     </Image>

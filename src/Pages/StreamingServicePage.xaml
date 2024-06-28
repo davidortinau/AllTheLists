@@ -60,7 +60,7 @@
                     Margin="-16,0"
                     HeightRequest="140" ItemsSource="{Binding RecommendedShows}" 
                     HorizontalScrollBarVisibility="Never"
-                    effects:ContentInsetAdjustmentBehavior.ContentInset="{Binding Margin,Source={x:Reference VStack}}">
+                    effects:ContentInsetAdjustmentBehavior.ContentInset="{Binding Margin, Source={x:Reference VStack}}">
                     <CollectionView.Effects>
                         <effects:ContentInsetAdjustmentBehaviorRoutingEffect/>
                     </CollectionView.Effects>

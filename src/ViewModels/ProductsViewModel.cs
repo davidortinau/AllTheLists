@@ -16,7 +16,7 @@ public partial class ProductsViewModel : ObservableObject
 
     public ProductsViewModel()
     {
-        Products = new ObservableCollection<Product>(MockDataService.GenerateProducts());
+        Products = new ObservableCollection<Product>(MockDataService.GenerateProducts().Where(p => !string.IsNullOrEmpty(p.ImageUrl)));
         ProductsAdapter = new ObservableCollectionAdapter<Product>(Products);
     }
 

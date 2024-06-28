@@ -21,12 +21,12 @@
     <Grid RowDefinitions="Auto,Auto,60" 
         Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Gray600}}">
         <Image 
-            Source="{Binding Product.ImageUrl}" 
+            Source="{Binding SocialImage}" 
             VerticalOptions="Start" 
             HorizontalOptions="Fill"
             Aspect="AspectFill"
             IsVisible="{Binding Product.HasImage}"
-            MinimumHeightRequest="200"
+            HeightRequest="200" 
         />
 
         <!-- User Info -->

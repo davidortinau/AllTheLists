@@ -32,7 +32,8 @@ public static class MockDataService
                     Name = $"Product {i}",
                     Price = ran,
                     Description = "This is a sample product description.",
-                    ImageUrl = ran % 2 == 0 ? "" : $"https://picsum.photos/id/{ran}/80",
+                    ImageUrl = $"https://picsum.photos/80/80?random={i}",
+                    SocialImageUrl = ran % 2 == 0 ? "" : $"https://picsum.photos/400/300?random={i}",
                     Image = shoeImages[Random.Shared.Next(0, shoeImages.Length)],
                     Company = $"Company {i}",
                     Type = $"Type {i}",
@@ -54,6 +55,8 @@ public static class MockDataService
         }
         return _products;
     }
+
+   
 
     private static List<ProductDisplay> _productDisplays;
 
@@ -122,13 +125,14 @@ public static class MockDataService
             return _checkIns;
 
         int count = 500;
+        string[] avatars = guyAvatars.Concat(galAvatars).ToArray();
         _checkIns = new List<CheckIn>();
         for (int i = 0; i < count; i++)
         {
             _checkIns.Add(new CheckIn
             {
                 Author = $"Author {i}",
-                AuthorIcon = $"https://picsum.photos/id/{Random.Shared.Next(1, 1000)}/40",
+                AuthorIcon = avatars[Random.Shared.Next(0, avatars.Length)],// $"https://picsum.photos/id/{Random.Shared.Next(1, 1000)}/40",
                 Venue = new Venue
                 {
                     Name = $"Venue {i}",
@@ -582,15 +586,15 @@ public static class MockDataService
 
             if (Random.Shared.Next(2) == 0)
             {
-            // Generate guy contact
-            firstNames = guyFirstNames;
-            avatars = guyAvatars;
+                // Generate guy contact
+                firstNames = guyFirstNames;
+                avatars = guyAvatars;
             }
             else
             {
-            // Generate gal contact
-            firstNames = galFirstNames;
-            avatars = galAvatars;
+                // Generate gal contact
+                firstNames = galFirstNames;
+                avatars = galAvatars;
             }
 
             _contacts.Add(new Contact
