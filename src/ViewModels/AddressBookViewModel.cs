@@ -56,9 +56,10 @@ public partial class AddressBookViewModel : ObservableObject
         {
             // If the search text is not empty, show only contacts that contain the search text
             ContactsGroups = _unfilteredContactsGroups
-                .Where(g => g.Any(c => 
-                    c.FirstName.Contains(SearchText, StringComparison.InvariantCultureIgnoreCase) 
-                    || c.LastName.Contains(SearchText, StringComparison.InvariantCultureIgnoreCase)))
+                .Select(g => new ContactsGroup(g.GroupName, g.Where(c =>
+                    c.FirstName.Contains(SearchText, StringComparison.OrdinalIgnoreCase)
+                    || c.LastName.Contains(SearchText, StringComparison.OrdinalIgnoreCase)).ToList()))
+                .Where(g => g.Any())
                 .ToList();
         }
     }

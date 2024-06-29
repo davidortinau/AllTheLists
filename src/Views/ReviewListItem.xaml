@@ -7,8 +7,7 @@
     <Grid ColumnDefinitions="40,*" 
         RowDefinitions="Auto,Auto"
         ColumnSpacing="8"
-        Margin="16"
-    >
+        Margin="16">
         <Image 
             Source="{Binding StatusImage}"
             Grid.Column="0" 

@@ -26,17 +26,6 @@
                 <DataTemplate>
                     <ViewCell>
                         <HorizontalStackLayout Padding="10" Spacing="16">
-                            <!-- <Border StrokeShape="RoundRectangle 10"
-                                StrokeThickness="0"
-                                VerticalOptions="Center"
-                                IsVisible="{Binding ProfilePicture, Converter={StaticResource IsNotNullConverter}}"
-                                >
-                                <Image Source="{Binding ProfilePicture}" 
-                                    WidthRequest="20" 
-                                    HeightRequest="20" 
-                                    Aspect="AspectFill" 
-                                    VerticalOptions="Center" />
-                            </Border> -->
                             <Label FontSize="16" VerticalOptions="Center">
                                 <Label.FormattedText>
                                     <FormattedString>

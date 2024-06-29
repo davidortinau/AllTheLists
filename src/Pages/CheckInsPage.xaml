@@ -9,6 +9,7 @@
              Background="{AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource OffBlack}}"
              Title="Check-ins">
     <CollectionView 
+        ItemSizingStrategy="MeasureAllItems"
         ItemsSource="{Binding CheckIns}">
         <CollectionView.ItemsLayout>
             <LinearItemsLayout Orientation="Vertical" ItemSpacing="10" />

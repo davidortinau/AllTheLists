@@ -10,7 +10,6 @@
              HasBackdrop="True">
 
     <the49:BottomSheet.Detents>
-        
         <the49:MediumDetent />
     </the49:BottomSheet.Detents>
 

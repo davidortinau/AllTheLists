@@ -27,6 +27,9 @@
                 </Style>
 
                 <mct:InvertedBoolConverter x:Key="InvertedBoolConverter" />
+                <mct:BoolToObjectConverter x:Key="BoolToChevronConverter" 
+                    TrueObject="{x:Static f:FluentUI.chevron_down_12_regular}" 
+                    FalseObject="{x:Static f:FluentUI.chevron_right_12_regular}" />
              </ContentPage.Resources>    
     <ScrollView>
         <VerticalStackLayout Spacing="12" Padding="16">
@@ -78,16 +81,15 @@
                             Style="{StaticResource SecondaryLabel}"
                             HorizontalOptions="End" HorizontalTextAlignment="End" 
                             IsVisible="{Binding Path=IsExpanded, Source={RelativeSource AncestorType={x:Type mct:Expander}}, Converter={StaticResource InvertedBoolConverter}}" />
-                        <Label Text="{x:Static f:FluentUI.chevron_right_12_regular}" Grid.Column="2" 
-                            Style="{StaticResource SecondaryLabel}" TextColor="{StaticResource ActionColor}"
-                            VerticalOptions="Center"
-                            IsVisible="{Binding Path=IsExpanded, Source={RelativeSource AncestorType={x:Type mct:Expander}}, Converter={StaticResource InvertedBoolConverter}}"
-                            FontSize="14" FontFamily="FluentUI" HorizontalOptions="Center" />
-                        <Label Text="{x:Static f:FluentUI.chevron_down_12_regular}" Grid.Column="2" 
-                            Style="{StaticResource SecondaryLabel}" TextColor="{StaticResource ActionColor}"
-                            VerticalOptions="Center"
-                            IsVisible="{Binding Path=IsExpanded, Source={RelativeSource AncestorType={x:Type mct:Expander}}}"
-                            FontSize="14" FontFamily="FluentUI" HorizontalOptions="Center" />
+                        <Label 
+                            Text="{Binding Path=IsExpanded, Source={RelativeSource AncestorType={x:Type mct:Expander}},Converter={StaticResource BoolToChevronConverter}}" 
+                            FontSize="14" 
+                            FontFamily="FluentUI" 
+                            Style="{StaticResource SecondaryLabel}" 
+                            TextColor="{StaticResource ActionColor}"
+                            Grid.Column="2" 
+                            VerticalOptions="Center"                            
+                            HorizontalOptions="Center" />                        
                     </Grid>                    
                 </mct:Expander.Header>
 
