@@ -66,11 +66,13 @@ If speed of rendering and scroll is of utmost importance to you, then these note
 
 * **Release vs Debug** - when evaluating performance, you must be using a release build. There are just so many things going on in a debug build that slow the app down that it's not at all useful to judge. Produce a release build and measure that. And know your options for AOT (Ahead of Time) compilation. .NET 9 has a preview Native AOT for iOS, however it's extremely strict and most libraries are not compatible. We did a lot of work in .NET MAUI itself to make it compatible. Android has partial (startup tracing) and full AOT to choose from. 
 
-* **Test on Device** - be sure to review release builds on device. If you know the target device and OS version of your users, then ideally test on that. I've used my iPhone 15 Pro, and a Pixel 5. I'm 99.9999% of cases, iOS isn't going to be the performance concern. 
+* **Test on Device** - be sure to review release builds on device. If you know the target device and OS version of your users, then ideally test on that. I've used my iPhone 15 Pro, and a Pixel 5. In 99.9999% of cases, iOS isn't where you're going to see performance concerns. 
 
 * **Layout compression (obsolete)** was a run-time optimization in Xamarin.Forms what would remove wrapping layouts from the visual tree. If the layout had no background color or received no user input via gestures, then it could safely be eliminated from the actual UI rendered to the screen. This was useful in Xamarin.Forms where nearly all views (renderers) were wrapped in views. Later in Xamarin.Forms a set of updated renderers was introduced aptly named "fast renderers" which removed those wrapping views. In .NET MAUI this redundancy was eliminated, and **Layout Compression** was not implemented. The API remains, but should be deprecated and you should treat it so.
 
 ## Layout 1: Basic List
+
+![video of basic list](images/basic_list_720.mp4)
 
 This is the most simple and common use of a list, so there's not much to say about it. All the rows are exactly the same height and layout. For this need you cannot go wrong between the virtualized controls. They all perform this scenario very well, even when displaying 10,000 rows.
 
@@ -96,7 +98,7 @@ This is the most simple and common use of a list, so there's not much to say abo
 </ListView>
 ```
 
-You may be wondering why I'm not binding anything above to the ProductListItem. BindingContext automatically propagates in this (and most) cases to the children. Here the provided BindingCOntext is the single Product.
+You may be wondering why I'm not binding anything above to the `ProductListItem`. `BindingContext` automatically propagates in this (and most) cases to the children. Here the provided `BindingContext` is the single `Product`.
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -127,7 +129,17 @@ You may be wondering why I'm not binding anything above to the ProductListItem. 
 
 In addition to samples for `ListView` and `CollectionView` I checked out `VirtualListView` by Redth and `VirtualizedListView` by MPowerKit. The latter is a completely cross-platform virtualized control, which is an interesting approach. If consistency across platforms is your goal, then that might be a great option for you. 
 
+References:
+
+* [CollectionView](https://learn.microsoft.com/dotnet/maui/user-interface/controls/collectionview/?view=net-maui-8.0)
+* [FFImageLoading.Maui](https://www.nuget.org/packages/FFImageLoading.Maui)
+* [ListView](https://learn.microsoft.com/dotnet/maui/user-interface/controls/listview?view=net-maui-8.0)
+* [VirtualListView](https://www.nuget.org/packages/Redth.Maui.VirtualListView)
+* [VirtualizeListView](https://www.nuget.org/packages/MPowerKit.VirtualizeListView)
+
 ## Layout 2: Reviews [Uneven rows]
+
+![video of reviews scrolling](images/reviews_720.mp4)
 
 While the template in this example is not very complex, it does have a variable length string that wraps in a `Label`. This is something that was problematic in early releases of .NET MAUI where the text would be clipped or flow offscreen. By default the `ItemSizingStrategy` is to measure only the first item and assume all the rest of the items are the same size. This is much more performant for obvious reasons.
 
@@ -184,7 +196,14 @@ To accomodate the variable sizing I need to use a strategy that measures all ite
 </Grid>
 ```
 
+References:
+
+* [CollectionView](https://learn.microsoft.com/dotnet/maui/user-interface/controls/collectionview/?view=net-maui-8.0)
+* [ItemSizingStrategy](https://learn.microsoft.com/dotnet/maui/user-interface/controls/collectionview/layout?view=net-maui-8.0#item-sizing)
+
 ## Layout 3: Social Check-in [Uneven rows, Complex Layout]
+
+![video of check-ins scrolling](images/checkins_720.mp4)
 
 For this sample I took inspiration from [Untapped](https://untappd.com), a social beer enthusiast app. The Activity feed shows the beer check-ins of your friends including a rating and an optional photo. When the photo is present the template is a bit taller, so I again need to handle uneven rows. 
 
@@ -248,6 +267,8 @@ References:
 
 ## Layout 4: Learning Course [Expand and Contract]
 
+![video of learning app scrolling](images/learning_720.mp4)
+
 Those of you who know me are aware I enjoy language learning. One of the apps I use has a nice UI that presents courses in units and lessons. Tapping a unit expands to display the different lessons with chapters in a table of contents, roadmap fashion. 
 
 Originally I tried this with `CollectionView` and `ListView`, but this confirmed a bug in .NET MAUI on iOS where resizing at runtime doesn't trigger the rest of the list control to resize as you would expect. As of version 8.0.60 this works great on Android. 
@@ -281,6 +302,8 @@ References:
 
 
 ## Layout 5: Who's Watching [Flex layout]
+
+![video of who's watching screen](images/whoiswatching_720.mp4)
 
 Inspired by Netflix and Disney+ and "insert other streaming service" I made a "Who's Watching" sample. This one is very simple. It's a `FlexLayout` with `BindableLayout`.
 
@@ -322,6 +345,8 @@ References:
 * [FlexLayout](https://learn.microsoft.com/dotnet/maui/user-interface/layouts/flexlayout?view=net-maui-8.0)
 
 ## Layout 6: Mailboxes [Expand and Contract]
+
+![video of mailboxes screen](images/mailboxes_720.mp4)
 
 To reproduce the Mailboxes UI I chose `BindableLayout` and `Expander` from the .NET MAUI Community Toolkit. While a user could end up with a lot of mail accounts that would then benefit from some virtualization, it seems reasonable to start here and grow up into a `CollectionView` when necessary.
 
@@ -420,6 +445,8 @@ References:
 * [Relative bindings](https://learn.microsoft.com/dotnet/maui/fundamentals/data-binding/relative-bindings?view=net-maui-8.0)
 
 ## Layout 7: Contacts [Grouping, Search]
+
+![video of contacts screen](images/address_book_720.mp4)
 
 Getting back into a sample with need for virtualization, grouping, and search I reproduced a Contacts list. 
 
@@ -546,6 +573,8 @@ References:
 * [SearchBar](https://learn.microsoft.com/dotnet/maui/user-interface/controls/searchbar?view=net-maui-8.0)
 
 ## Layout 8: Shopping [Header, Data template selector, infinite scroll]
+
+![video of shopping UI](images/shopping_720.mp4)
 
 Inspired by the Adidas app, I had a bit of fun making this one. In addition to a header, and making product images with ChatGPT, the display pattern is unique. You begin thinking it's going to be a grid layout with 2 columns, but then after 4 rows you hit a product that spans both columns. Ok, so 4 and then 1, right? Wrong. From there on out it's 2 and 1. 🤯
 
@@ -739,4 +768,6 @@ In conclusion, when choosing the right control for your app scenario, you have o
 
 As I was writing this, I kept seeing more things to add and try such as editing and ordering a list. I suppose that's what tomorrow is for. 
 
-I hope this was a fun read and you have learned a thing or two. Maybe you have a better way to do something, or you hate how I did it. Code can be a very personal thing to. Whatever your reaction, be energized to go make something amazing to share with the world. 
+All of my development here was done on .NET 9 previews using [VS Code Insiders](https://code.visualstudio.com/insiders/) and pre-release bits of [.NET MAUI extension for VS Code](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.dotnet-maui) on a Macbook Pro M1. The addition of XAML intellisense and XAML/C# Hot Reload has been great. 
+
+I hope this has been a fun read and you have found a take-away or two. Maybe you have a better way to do something, or you hate how I did it. Code can be a very personal thing. Whatever your reaction, be energized to go make something amazing to share with the world. 

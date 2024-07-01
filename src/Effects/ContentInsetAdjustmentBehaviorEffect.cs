@@ -4,6 +4,11 @@ using Microsoft.Maui.Controls.Platform;
 using UIKit;
 #endif
 
+#if ANDROID
+using AndroidX.RecyclerView.Widget;
+using Microsoft.Maui.Platform;
+#endif
+
 namespace Effects;
 
 public static class ContentInsetAdjustmentBehavior
@@ -73,34 +78,39 @@ public class ContentInsetAdjustmentBehaviorPlatformEffect : PlatformEffect
     }
 }
 #endif
-// #if ANDROID
-// public class ContentInsetAdjustmentBehaviorPlatformEffect : PlatformEffect
-// {
-//     protected override void OnAttached()
-//     {
-//         // try
-//         // {
-//         //     var scroll = Control.Subviews[0] as UICollectionView;
-//         //     scroll.ContentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentBehavior.Never;
-            
-//         //     var inset = (Thickness)Element.GetValue(ContentInsetAdjustmentBehavior.ContentInsetProperty);
-//         //     scroll.ContentInset = new UIEdgeInsets((nfloat)inset.Top, (nfloat)inset.Left, (nfloat)inset.Bottom, (nfloat)inset.Right);
-//         // }
-//         // catch (Exception ex)
-//         // {
-//         //     Console.WriteLine("Cannot set property on attached control. Error: ", ex.Message);
-//         // }
-//     }
-
-//     protected override void OnDetached()
-//     {
-//     }
-
-//     protected override void OnElementPropertyChanged(PropertyChangedEventArgs args)
-//     {
-//         base.OnElementPropertyChanged(args);
-
+#if ANDROID
+public class ContentInsetAdjustmentBehaviorPlatformEffect : PlatformEffect
+{
+    protected override void OnAttached()
+    {
         
-//     }
-// }
-// #endif
+        if (Container is not null && Container.Context is not null)
+        {
+            if (Container is RecyclerView recyclerView)
+            {
+                if (recyclerView != null)
+                {
+                    var inset = (Thickness)Element.GetValue(ContentInsetAdjustmentBehavior.ContentInsetProperty);
+                    var context = recyclerView.Context;
+                    var left = (int)context.ToPixels(inset.Left);
+                    var top = (int)context.ToPixels(inset.Top);
+                    var right = (int)context.ToPixels(inset.Right);
+                    var bottom = (int)context.ToPixels(inset.Bottom);
+
+                    recyclerView.SetPadding(left, top, right, bottom);
+                    recyclerView.SetClipToPadding(false);
+                }
+            }
+        }
+    }
+
+    protected override void OnDetached()
+    {
+    }
+
+    protected override void OnElementPropertyChanged(PropertyChangedEventArgs args)
+    {
+        base.OnElementPropertyChanged(args);        
+    }
+}
+#endif

@@ -31,9 +31,9 @@ public static class MauiProgram
 			})
 			.ConfigureEffects(effects =>
 			{
-                #if IOS || MACCATALYST
+                
 				effects.Add<ContentInsetAdjustmentBehaviorRoutingEffect, ContentInsetAdjustmentBehaviorPlatformEffect>();
-                #endif
+                
 			});
 
 #if DEBUG

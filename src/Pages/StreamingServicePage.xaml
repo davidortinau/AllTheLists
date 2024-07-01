@@ -58,7 +58,8 @@
                 <Label Text="Recommended For You"/>
                 <CollectionView 
                     Margin="-16,0"
-                    HeightRequest="140" ItemsSource="{Binding RecommendedShows}" 
+                    HeightRequest="140" 
+                    ItemsSource="{Binding RecommendedShows}" 
                     HorizontalScrollBarVisibility="Never"
                     effects:ContentInsetAdjustmentBehavior.ContentInset="{Binding Margin, Source={x:Reference VStack}}">
                     <CollectionView.Effects>
@@ -70,8 +71,13 @@
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
                             <Border StrokeShape="RoundRectangle 8" Stroke="{AppThemeBinding Light={StaticResource Gray900}, Dark={StaticResource Gray200}}"
-                                Background="#1d1d1d" WidthRequest="80">
-                                <Image Source="{Binding .}" Aspect="AspectFit" VerticalOptions="Fill" HorizontalOptions="Fill" />
+                                 WidthRequest="80">
+                                <Image Source="{Binding .}" 
+                                    Aspect="AspectFit" 
+                                    HeightRequest="140"
+                                    WidthRequest="80"
+                                    VerticalOptions="Fill" 
+                                    HorizontalOptions="Fill" />
                             </Border>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
@@ -92,7 +98,12 @@
                         <DataTemplate>
                             <Border StrokeShape="RoundRectangle 8" Stroke="{AppThemeBinding Light={StaticResource Gray900}, Dark={StaticResource Gray200}}"
                                 Background="#1d1d1d" WidthRequest="80">
-                                <Image Source="{Binding .}" Aspect="AspectFit" VerticalOptions="Fill" HorizontalOptions="Fill" />
+                                <Image Source="{Binding .}" 
+                                    Aspect="AspectFit" 
+                                    HeightRequest="140"
+                                    WidthRequest="80"
+                                    VerticalOptions="Fill" 
+                                    HorizontalOptions="Fill" />
                             </Border>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
