@@ -47,7 +47,7 @@
                         </x:Array>
                     </BindableLayout.ItemsSource>
                     <BindableLayout.ItemTemplate>
-                        <DataTemplate>
+                        <DataTemplate x:DataType="m:Mailbox">
                             <Grid ColumnDefinitions="60,*,100,50" RowDefinitions="40,1">
                                 <Image Aspect="Center" HorizontalOptions="Center" VerticalOptions="Center">
                                     <Image.Source>
@@ -107,7 +107,7 @@
                         </x:Array>
                     </BindableLayout.ItemsSource>
                     <BindableLayout.ItemTemplate>
-                        <DataTemplate>
+                        <DataTemplate x:DataType="m:Mailbox">
                             <Grid ColumnDefinitions="60,*,100,50" RowDefinitions="40,1">
                                 <Image Aspect="Center" HorizontalOptions="Center" VerticalOptions="Center">
                                     <Image.Source>
