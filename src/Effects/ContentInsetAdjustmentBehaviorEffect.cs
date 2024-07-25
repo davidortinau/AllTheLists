@@ -11,20 +11,35 @@ using Microsoft.Maui.Platform;
 
 namespace Effects;
 
-public static class ContentInsetAdjustmentBehavior
+public static class ContentInset
 {
-    public static readonly BindableProperty ContentInsetProperty =
-        BindableProperty.CreateAttached("ContentInset", typeof(Thickness), typeof(ContentInsetAdjustmentBehavior), new Thickness(0));
+    public static readonly BindableProperty InsetProperty =
+        BindableProperty.CreateAttached("Inset", typeof(Thickness), typeof(ContentInset), default(Thickness), propertyChanged: OnInsetChanged);
 
-    public static Thickness GetContentInset(BindableObject view)
+    private static void OnInsetChanged(BindableObject bindable, object oldValue, object newValue)
     {
-        return (Thickness)view.GetValue(ContentInsetProperty);
+        var control = bindable as VisualElement;
+            if (control == null)
+                return;
+
+            Thickness? thickness = (Thickness)newValue;
+
+            var attachedEffect = control.Effects.FirstOrDefault (e => e is ContentInset);
+            if (thickness != Thickness.Zero && attachedEffect == null)
+                control.Effects.Add (new ContentInsetAdjustmentBehaviorPlatformEffect ());
+            else if (thickness == Thickness.Zero && attachedEffect != null)
+                control.Effects.Remove (attachedEffect);
     }
 
-    public static void SetContentInset (BindableObject view, bool value)
-    {
-        view.SetValue(ContentInsetProperty, value);
-    }
+    public static Thickness GetInset (BindableObject view)
+        {
+            return (Thickness)view.GetValue (InsetProperty);
+        }
+
+        public static void SetInset (BindableObject view, Thickness thickness)
+        {
+            view.SetValue (InsetProperty, thickness);
+        }
 }
 
 public class ContentInsetAdjustmentBehaviorRoutingEffect : RoutingEffect
@@ -36,7 +51,6 @@ public class ContentInsetAdjustmentBehaviorRoutingEffect : RoutingEffect
 #if IOS || MACCATALYST
 public class ContentInsetAdjustmentBehaviorPlatformEffect : PlatformEffect
 {
-
     protected override void OnAttached()
     {
         try
@@ -44,7 +58,7 @@ public class ContentInsetAdjustmentBehaviorPlatformEffect : PlatformEffect
             var scroll = Control.Subviews[0] as UICollectionView;
             scroll.ContentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentBehavior.Never;
             
-            var inset = (Thickness)Element.GetValue(ContentInsetAdjustmentBehavior.ContentInsetProperty);
+            var inset = (Thickness)Element.GetValue(ContentInset.InsetProperty);
             scroll.ContentInset = new UIEdgeInsets((nfloat)inset.Top, (nfloat)inset.Left, (nfloat)inset.Bottom, (nfloat)inset.Right);
         }
         catch (Exception ex)
@@ -66,7 +80,7 @@ public class ContentInsetAdjustmentBehaviorPlatformEffect : PlatformEffect
             if (args.PropertyName == "ContentInset")
             {
                 var scroll = Control.Subviews[0] as UICollectionView;
-                var inset = (Thickness)Element.GetValue(ContentInsetAdjustmentBehavior.ContentInsetProperty);
+                var inset = (Thickness)Element.GetValue(ContentInset.InsetProperty);
                 scroll.ContentInset = new UIEdgeInsets((nfloat)inset.Top, (nfloat)inset.Left, (nfloat)inset.Bottom, (nfloat)inset.Right);
 
             }
@@ -90,7 +104,7 @@ public class ContentInsetAdjustmentBehaviorPlatformEffect : PlatformEffect
             {
                 if (recyclerView != null)
                 {
-                    var inset = (Thickness)Element.GetValue(ContentInsetAdjustmentBehavior.ContentInsetProperty);
+                    var inset = (Thickness)Element.GetValue(ContentInset.InsetProperty);
                     var context = recyclerView.Context;
                     var left = (int)context.ToPixels(inset.Left);
                     var top = (int)context.ToPixels(inset.Top);

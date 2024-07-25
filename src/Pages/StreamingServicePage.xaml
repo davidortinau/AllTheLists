@@ -61,10 +61,7 @@
                     HeightRequest="140" 
                     ItemsSource="{Binding RecommendedShows}" 
                     HorizontalScrollBarVisibility="Never"
-                    effects:ContentInsetAdjustmentBehavior.ContentInset="{Binding Margin, Source={x:Reference VStack}}">
-                    <CollectionView.Effects>
-                        <effects:ContentInsetAdjustmentBehaviorRoutingEffect/>
-                    </CollectionView.Effects>
+                    effects:ContentInset.Inset="{Binding Margin, Source={x:Reference VStack}, x:DataType={x:Null}}">
                     <CollectionView.ItemsLayout>
                         <LinearItemsLayout Orientation="Horizontal" ItemSpacing="12"/>
                     </CollectionView.ItemsLayout>
@@ -87,10 +84,7 @@
                 <CollectionView 
                     Margin="-16,0" HeightRequest="140" ItemsSource="{Binding NewShows}" 
                     HorizontalScrollBarVisibility="Never"
-                    effects:ContentInsetAdjustmentBehavior.ContentInset="{Binding Margin,Source={x:Reference VStack}}">
-                    <CollectionView.Effects>
-                        <effects:ContentInsetAdjustmentBehaviorRoutingEffect/>
-                    </CollectionView.Effects>
+                    effects:ContentInset.Inset="{Binding Margin, Source={x:Reference VStack}, x:DataType={x:Null}}">
                     <CollectionView.ItemsLayout>
                         <LinearItemsLayout Orientation="Horizontal" ItemSpacing="12"/>
                     </CollectionView.ItemsLayout>
@@ -112,10 +106,7 @@
                 <Label Text="Continue Watching" Margin="0,16,0,0"/>
                 <CollectionView HeightRequest="120" ItemsSource="{Binding ContinueWatching}" HorizontalScrollBarVisibility="Never"
                     Margin="-16,0"
-                    effects:ContentInsetAdjustmentBehavior.ContentInset="{Binding Margin,Source={x:Reference VStack}}">
-                    <CollectionView.Effects>
-                        <effects:ContentInsetAdjustmentBehaviorRoutingEffect/>
-                    </CollectionView.Effects>
+                    effects:ContentInset.Inset="{Binding Margin, Source={x:Reference VStack}, x:DataType={x:Null}}">
                     <CollectionView.ItemsLayout>
                         <LinearItemsLayout Orientation="Horizontal" ItemSpacing="12"/>
                     </CollectionView.ItemsLayout>
@@ -148,10 +139,7 @@
                 <CollectionView 
                     Margin="-16,0" HeightRequest="140" ItemsSource="{Binding ActionShows}" 
                     HorizontalScrollBarVisibility="Never"
-                    effects:ContentInsetAdjustmentBehavior.ContentInset="{Binding Margin,Source={x:Reference VStack}}">
-                    <CollectionView.Effects>
-                        <effects:ContentInsetAdjustmentBehaviorRoutingEffect/>
-                    </CollectionView.Effects>
+                    effects:ContentInset.Inset="{Binding Margin, Source={x:Reference VStack}, x:DataType={x:Null}}">
                     <CollectionView.ItemsLayout>
                         <LinearItemsLayout Orientation="Horizontal" ItemSpacing="12"/>
                     </CollectionView.ItemsLayout>
@@ -171,10 +159,7 @@
                 <CollectionView 
                     Margin="-16,0" HeightRequest="140" ItemsSource="{Binding RealityShows}" 
                     HorizontalScrollBarVisibility="Never"
-                    effects:ContentInsetAdjustmentBehavior.ContentInset="{Binding Margin,Source={x:Reference VStack}}">
-                    <CollectionView.Effects>
-                        <effects:ContentInsetAdjustmentBehaviorRoutingEffect/>
-                    </CollectionView.Effects>
+                    effects:ContentInset.Inset="{Binding Margin, Source={x:Reference VStack}, x:DataType={x:Null}}">
                     <CollectionView.ItemsLayout>
                         <LinearItemsLayout Orientation="Horizontal" ItemSpacing="12"/>
                     </CollectionView.ItemsLayout>
