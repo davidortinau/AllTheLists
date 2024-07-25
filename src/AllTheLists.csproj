@@ -1,10 +1,10 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
 
 	<PropertyGroup>
-		<TargetFrameworks>net8.0-android;net8.0-ios;net8.0-maccatalyst</TargetFrameworks>
-		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net8.0-windows10.0.19041.0</TargetFrameworks>
+		<TargetFrameworks>net9.0-android;net9.0-ios;net9.0-maccatalyst</TargetFrameworks>
+		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net9.0-windows10.0.19041.0</TargetFrameworks>
 		<!-- Uncomment to also build the tizen app. You will need to install tizen by following this: https://github.com/Samsung/Tizen.NET -->
-		<!-- <TargetFrameworks>$(TargetFrameworks);net8.0-tizen</TargetFrameworks> -->
+		<!-- <TargetFrameworks>$(TargetFrameworks);net9.0-tizen</TargetFrameworks> -->
 
 		<!-- Note for MacCatalyst:
 		The default runtime is maccatalyst-x64, except in Release config, in which case the default is maccatalyst-x64;maccatalyst-arm64.
@@ -19,8 +19,9 @@
 		<SingleProject>true</SingleProject>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
+		<EnableDefaultCssItems>false</EnableDefaultCssItems>
 
-		<!-- <MauiVersion>8.0.70-ci.net8.24320.1</MauiVersion> -->
+		<!-- <MauiVersion>8.0.70-ci.net9.24320.1</MauiVersion> -->
 		<!-- <MauiVersion>9.0.0-preview.5.24307.10</MauiVersion> -->
 
 		<NoWarn>$(NoWarn);CS8618;CS8767;CS8603</NoWarn>
@@ -43,12 +44,12 @@
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
 	</PropertyGroup>
 
-	<!-- <PropertyGroup Condition="'$(TargetFramework)' == 'net8.0-android'">
+	<!-- <PropertyGroup Condition="'$(TargetFramework)' == 'net9.0-android'">
 		<AndroidEnableLLVM>false</AndroidEnableLLVM>
     	<AndroidEnableLLVMOptimizations>false</AndroidEnableLLVMOptimizations>
 	</PropertyGroup> -->
 
-<!-- <PropertyGroup Condition="'$(Configuration)' == 'Release' And '$(TargetFramework)' == 'net8.0-android'">
+<!-- <PropertyGroup Condition="'$(Configuration)' == 'Release' And '$(TargetFramework)' == 'net9.0-android'">
 	<TrimMode>Full</TrimMode>
 </PropertyGroup>
 
@@ -89,16 +90,18 @@
 
 	<ItemGroup>
 		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
+		<PackageReference Include="Microsoft.AspNetCore.Components.WebView.Maui" Version="$(MauiVersion)" />
 		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
-		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="9.0.0-preview.5.24306.7" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="9.0.0-preview.6.24327.7" />
 		<PackageReference Include="Redth.Maui.VirtualListView" Version="0.4.0" />
-		<PackageReference Include="MPowerKit.VirtualizeListView" Version="1.1.1" />
-		<PackageReference Include="FFImageLoading.Maui" Version="1.2.5" />
+		<PackageReference Include="MPowerKit.VirtualizeListView" Version="1.2.0" />
+		<PackageReference Include="FFImageLoading.Maui" Version="1.2.6" />
 		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
-		<PackageReference Include="CommunityToolkit.Maui" Version="9.0.1" />
+		<PackageReference Include="CommunityToolkit.Maui" Version="9.0.2" />
 		<PackageReference Include="pankaj.util.RatingControl" Version="1.0.0.2" />
 		<PackageReference Include="AlohaKit.Layouts" Version="1.0.0" />
 		<PackageReference Include="The49.Maui.BottomSheet" Version="8.0.3" />
+		<PackageReference Include="Soenneker.Blazor.Masonry" Version="2.1.550" />
 	</ItemGroup>
 
 </Project>
