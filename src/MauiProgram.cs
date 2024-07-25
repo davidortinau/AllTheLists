@@ -6,6 +6,8 @@ using RatingControlMaui;
 using AlohaKit.Layouts.Hosting;
 using Effects;
 using The49.Maui.BottomSheet;
+using AllTheLists.Services;
+// using Soenneker.Blazor.Masonry.Registrars;
 
 namespace AllTheLists;
 
@@ -36,7 +38,12 @@ public static class MauiProgram
                 
 			});
 
+			builder.Services.AddMauiBlazorWebView();
+			// builder.Services.AddMasonry();
+			builder.Services.AddScoped<IMasonryInterop, MasonryInterop>();
+
 #if DEBUG
+		builder.Services.AddBlazorWebViewDeveloperTools();
 		builder.Logging.AddDebug();
 #endif
 
