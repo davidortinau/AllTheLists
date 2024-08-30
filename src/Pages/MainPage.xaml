@@ -35,6 +35,7 @@
             
         <BindableLayout.ItemsSource>
             <x:Array Type="{x:Type m:Sample}">
+                <!-- <m:Sample Name="Photo Gallery" Page="{x:Type p:PhotoGallery}" Image="adidas.png" /> -->
                 <m:Sample Name="CollectionView" Page="{x:Type p:CollectionViewPage}" Image="basic.png" />
                 <m:Sample Name="Reviews" Page="{x:Type p:ReviewsPage}" Image="reviews.png" />
                 <m:Sample Name="Check-ins" Page="{x:Type p:CheckInsPage}" Image="checkins.png" />

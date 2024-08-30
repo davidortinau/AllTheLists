@@ -1,0 +1,52 @@
+﻿@page "/"
+@using System.Drawing;
+
+@inject IMasonryInterop Masonry
+
+<h1>Masonry FTW</h1>
+
+<div class="grid" data-masonry='{ "itemSelector": ".grid-item", "columnWidth": ".grid-sizer", "gutter": ".gutter-sizer", "percentPosition", true }'>
+    
+    <div class="grid-sizer"></div>
+    <div class="gutter-sizer"></div>
+    @foreach (var item in Items)
+    {
+        <div class="grid-item" @key="item">
+            <img src="images/@item.Image" />
+            @item.Name
+        </div>
+    }
+    
+</div>
+
+
+@code {
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        
+    }
+
+    List<Sample> Items = new();
+    protected override async Task OnInitializedAsync()
+    {
+        
+        Items = new List<Sample>
+        {
+            new Sample { Name = "Home", Page = typeof(HomePage), Image = "adidas.png" },
+            new Sample { Name = "CollectionView", Page = typeof(CollectionViewPage), Image = "basic.png" },
+            new Sample { Name = "Reviews", Page = typeof(ReviewsPage), Image = "reviews.png" },
+            new Sample { Name = "Check-ins", Page = typeof(CheckInsPage), Image = "checkins.png" },
+            new Sample { Name = "Learning", Page = typeof(LearningPage), Image = "learning.png" },
+            new Sample { Name = "ListView", Page = typeof(ListViewPage), Image = "basic.png" },
+            new Sample { Name = "Shopping", Page = typeof(ShoppingPage), Image = "adidas.png" },
+            new Sample { Name = "Address Book", Page = typeof(AddressBookPage), Image = "contacts.png" },
+            new Sample { Name = "VirtualListView (Redth)", Page = typeof(VirtualListViewPage), Image = "basic.png" },
+            new Sample { Name = "Who is Watching", Page = typeof(WhoIsWatchingPage), Image = "whoiswatching.png" },
+            new Sample { Name = "Streaming Service", Page = typeof(StreamingServicePage), Image = "streaming.png" },
+            new Sample { Name = "Unified Inbox", Page = typeof(InboxPage), Image = "inbox.png" },
+            new Sample { Name = "VirtualizedListView", Page = typeof(VirtualizedListViewPage), Image = "basic.png" }
+        };
+        
+    }
+    
+}

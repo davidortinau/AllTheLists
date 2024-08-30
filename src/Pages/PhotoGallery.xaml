@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:mr="clr-namespace:MR.Gestures;assembly=MR.Gestures"
+             x:Class="AllTheLists.Pages.PhotoGallery"
+             xmlns:f="clr-namespace:Fonts"
+             xmlns:vm="clr-namespace:AllTheLists.ViewModels"
+             x:Name="Page"
+             Title="PhotoGallery">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem IconImageSource="{FontImage FontFamily=FontAwesome,
+                        Glyph={x:Static f:FontAwesome.ShareSquare},
+                        Size=24}"
+                     Order="Primary"
+                     Clicked="ToolbarItem_Clicked"/>
+        <ToolbarItem IconImageSource="{FontImage FontFamily=FontAwesome,
+                        Glyph={x:Static f:FontAwesome.Recycle},
+                        Size=24}"
+                     Order="Primary"
+                     Clicked="ClearItem_Clicked"
+                     Command="{Binding ClearCommand}"/>
+    </ContentPage.ToolbarItems>
+
+    <Grid>
+        <CollectionView Margin="8"
+                    x:Name="PhotosCV"
+                    SelectionMode="{Binding SelectionMode}"
+                    SelectedItems="{Binding SelectedPhotos}"
+                    ItemsSource="{Binding Photos}"
+                    >
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout
+                Orientation="Vertical"
+                Span="2"
+                HorizontalItemSpacing="8"
+                VerticalItemSpacing="8"/>
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <mr:Grid
+                        HeightRequest="120"
+                        Padding="0"
+                        Background="{StaticResource Primary}" 
+                        LongPressedCommand="{Binding LongPressCommand, Source={RelativeSource AncestorType={x:Type vm:PhotoGalleryViewModel}}}"
+                        LongPressedCommandParameter="{Binding .}"
+                        >
+                        <Grid.Shadow>
+                            <Shadow Offset="0,0"
+                                Radius="5"
+                                Brush="Black"
+                                Opacity="0.5"/>
+                        </Grid.Shadow>
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Normal">
+                                    <VisualState.Setters>
+                                        <Setter
+                                        Property="Padding"
+                                        Value="0"/>
+                                        <Setter
+                                        TargetName="CheckIcon"
+                                        Property="Image.IsVisible"
+                                        Value="False"/>
+                                    </VisualState.Setters>
+                                </VisualState>
+                                <VisualState x:Name="Selected">
+                                    <VisualState.Setters>
+                                        <Setter
+                                        Property="Padding"
+                                        Value="8"/>
+                                        <Setter
+                                        TargetName="CheckIcon"
+                                        Property="Image.IsVisible"
+                                        Value="True"/>
+                                    </VisualState.Setters>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                        <!-- <Grid.Behaviors>
+                            <toolkit:TouchBehavior
+                                LongPressDuration="750"
+                                LongPressCommand="{Binding Path=BindingContext.LongPressCommand, Source={x:Reference Page}}"
+                                LongPressCommandParameter="{Binding .}"
+                                PressedScale="1.2" 
+                                Command="{Binding Path=BindingContext.PressedCommand, Source={x:Reference Page}}"
+                                CommandParameter="{Binding .}"
+                                />
+                        </Grid.Behaviors> -->
+                            <Image
+                                BackgroundColor="Black"
+                                Source="{Binding ImageSrc}"
+                                Aspect="AspectFill"/>
+                            <Image
+                                x:Name="CheckIcon"
+                                Source="{FontImage FontFamily=FontAwesome,
+                                    Glyph={x:Static f:FontAwesome.CheckSquare},
+                                    Color={StaticResource Primary},
+                                    Size=18}"
+                                VerticalOptions="End"
+                                HorizontalOptions="Start"
+                                Margin="4"/>                            
+                        </mr:Grid>
+                        
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        
+        <!-- Backdrop -->
+        <ContentView Background="#4B000000"
+                 Opacity="0"
+                 InputTransparent="True"
+                 x:Name="Backdrop">
+            <ContentView.GestureRecognizers>
+                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+            </ContentView.GestureRecognizers>
+        </ContentView>
+        
+        <!-- Bottom Drawer -->
+        <Frame
+            x:Name="BottomToolbar"
+            HeightRequest="200"
+            VerticalOptions="End"
+            BackgroundColor="#FFFFFF"
+            CornerRadius="20"
+            TranslationY="260"
+            Padding="15,6">
+            <Frame.GestureRecognizers>
+                <PanGestureRecognizer
+                    PanUpdated="PanGestureRecognizer_PanUpdated"
+            />
+            </Frame.GestureRecognizers>
+            <StackLayout Orientation="Vertical" Padding="0,4">
+                <BoxView CornerRadius="2" HeightRequest="4" WidthRequest="40"
+                         BackgroundColor="LightGray"
+                         HorizontalOptions="Center"/>
+                <Label Text="Actions"
+                       HorizontalOptions="Center"
+                       FontSize="18"
+                       FontAttributes="Bold"/>
+                <TableView Intent="Settings"
+                   VerticalOptions="End"
+                   BackgroundColor="White"
+                   >
+                    <TableSection>
+                        <TextCell
+                            Text="Favorite"/>
+                        <TextCell
+                            Command="{Binding GoShareCommand}"
+                            Text="Share"/>
+                    </TableSection>
+                </TableView>
+            </StackLayout>
+
+        </Frame>
+    </Grid>
+</ContentPage>
